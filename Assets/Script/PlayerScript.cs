@@ -1,0 +1,169 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Assertions.Must;
+
+
+public class PlayerScript : MonoBehaviour
+{
+    [SerializeField] private Vector2 moveSpeed;
+    private Vector2 nowMoveSpeed;
+    Rigidbody2D playerRigidbody;
+    private Vector2 input;
+    private GameObject playerAnimeObj;
+    private Animator playerAnime = null;
+    private bool isHold;
+    private bool isRelese;
+    private bool isYadoHold;//持ったものごとに特別な処理をする場合のフラグ
+    private bool isHokoraHold;
+    GameObject hitObj;
+    GameObject holdObj;
+
+    public bool GetIsHold() { return isHold; }
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerRigidbody = gameObject.GetComponent<Rigidbody2D>();
+        isYadoHold = false;
+        playerAnimeObj = transform.GetChild(0).gameObject;
+        playerAnime = playerAnimeObj.GetComponent<Animator>();
+        nowMoveSpeed = moveSpeed;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        Hold();
+        Relese();
+
+        SetAnimator();
+    }
+
+
+    void Move()
+    {
+
+
+        input.x = Input.GetAxis("Horizontal");
+        input.y = Input.GetAxis("Vertical");
+
+        Vector2 velocity = input * nowMoveSpeed;
+        playerRigidbody.velocity = velocity;
+        if (velocity.x > 0)
+        {
+            playerAnimeObj.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (velocity.x < 0)
+        {
+            playerAnimeObj.GetComponent<SpriteRenderer>().flipX = true;
+        }
+    }
+
+    void Hold()
+    {
+        isRelese = isHold;
+
+        //既に持っていたらリターン
+        if (isHold && isRelese) { return; }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (hitObj != null)
+            {
+                isHold = true;
+                //ここにオブジェクトごとの関数をいれる
+                YadoHold();
+                HokoraHold();
+            }
+        }
+    }
+    void Relese()
+    {
+        //何も持っていなかったらリターン
+        if (!isRelese) { return; }
+        if (Input.GetButtonDown("Jump"))
+        {
+            isHold = false;
+            YadoRelese();
+            HokoraRelese();
+        }
+    }
+
+    void YadoHold()
+    {
+        if (hitObj.gameObject.tag != "Yado") { return; }
+        isYadoHold = true;
+        holdObj = hitObj;
+        holdObj.GetComponent<YadoScript>().SetIsHold(true);
+        Debug.Log("isYadoHold");
+
+    }
+    void YadoRelese()
+    {
+        //ヤドを持っていなかったらリターン
+        if (!isYadoHold) { return; }
+        isYadoHold = false;
+        holdObj.GetComponent<YadoScript>().SetIsHold(false);
+        holdObj.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        Debug.Log("isYadoRelese");
+    }
+    void HokoraHold()
+    {
+        if (hitObj.gameObject.tag != "Hokora") { return; }
+        //ホコラを持ったら速度を遅くする
+        nowMoveSpeed = moveSpeed / 2;
+
+        isHokoraHold = true;
+        holdObj = hitObj;
+        holdObj.GetComponent<HokoraScript>().SetIsHold(true);
+        Debug.Log("isHokoraHold");
+
+    }
+    void HokoraRelese()
+    {
+        //ホコラを持っていなかったらリターン
+        if (!isHokoraHold) { return; }
+        //速度をもとに戻す
+        nowMoveSpeed = moveSpeed;
+
+        isHokoraHold = false;
+        holdObj.GetComponent<HokoraScript>().SetIsHold(false);
+        holdObj.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        Debug.Log("isHokoraRelese");
+    }
+
+    void SetAnimator()
+    {
+        playerAnime.SetFloat("speed", input.magnitude);
+        playerAnime.SetBool("isYadoHold", isYadoHold);
+
+
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        hitObj = collision.gameObject;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        hitObj = null;
+    }
+}
