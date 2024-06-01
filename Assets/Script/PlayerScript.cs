@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     GameObject hitObj;
     GameObject holdObj;
 
+    private CapsuleCollider2D capsuleCollider;
+
     public bool GetIsHold() { return isHold; }
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class PlayerScript : MonoBehaviour
         playerAnimeObj = transform.GetChild(0).gameObject;
         playerAnime = playerAnimeObj.GetComponent<Animator>();
         nowMoveSpeed = moveSpeed;
+        capsuleCollider=GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -71,6 +74,8 @@ public class PlayerScript : MonoBehaviour
         {
             if (hitObj != null)
             {
+                capsuleCollider.offset = new Vector2(0, 0);
+                capsuleCollider.size = new Vector2(1, 1.2f);
                 isHold = true;
                 //ここにオブジェクトごとの関数をいれる
                 YadoHold();
@@ -84,6 +89,8 @@ public class PlayerScript : MonoBehaviour
         if (!isRelese) { return; }
         if (Input.GetButtonDown("Jump"))
         {
+            capsuleCollider.offset = new Vector2(-0.03f, -0.23f);
+            capsuleCollider.size = new Vector2(1, 0.5f);
             isHold = false;
             YadoRelese();
             HokoraRelese();
