@@ -11,12 +11,14 @@ public class YadoScript : MonoBehaviour
     public float[] levelUpTime;
     private float xpCount;
     private int levelCount;//åªç›ÇÃÉåÉxÉã
+    private BoxCollider2D collider;
 
     public void SetIsHold(bool set) { isHold = set; }
     void Start()
     {
         childObj = transform.GetChild(0).gameObject;
         levelCount = 0;
+        collider=GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -40,10 +42,12 @@ public class YadoScript : MonoBehaviour
 
 
             childObj.SetActive(false);
+            collider.enabled = false;
         }
         else
         {
             childObj.SetActive(true);
+            collider.enabled = true;
         }
     }
 }
