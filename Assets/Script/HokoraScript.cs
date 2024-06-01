@@ -66,6 +66,7 @@ public class HokoraScript : MonoBehaviour
         if( spownPrefab == null|| isHold) { return; }
         GameObject  spownObj=Instantiate(spownPrefab);
         spownObj.transform.position=transform.position;
+        spownCount = spownTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
