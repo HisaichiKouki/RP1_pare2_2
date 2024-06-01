@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
         playerAnimeObj = transform.GetChild(0).gameObject;
         playerAnime = playerAnimeObj.GetComponent<Animator>();
         nowMoveSpeed = moveSpeed;
-        capsuleCollider=GetComponent<CapsuleCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -42,6 +42,8 @@ public class PlayerScript : MonoBehaviour
         Relese();
 
         SetAnimator();
+
+
     }
 
 
@@ -75,6 +77,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (hitObj != null)
             {
+                hitObj.transform.GetChild(1).gameObject.SetActive(false);
                 capsuleCollider.offset = new Vector2(0, 0);
                 capsuleCollider.size = new Vector2(1, 1.2f);
                 isHold = true;
@@ -163,16 +166,28 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        hitObj = collision.gameObject;
+        if (collision.gameObject.tag == "Yado" || collision.gameObject.tag == "Hokora")
+        {
+            //元のオブジェクトの表示を消した後、新しい方を表示する
+            if (hitObj != null) { hitObj.transform.GetChild(1).gameObject.SetActive(false); }
+            hitObj = collision.gameObject;
+            hitObj.transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-
-        hitObj = null;
+        if (collision.gameObject.tag == "Yado" || collision.gameObject.tag == "Hokora")
+        {
+            //オブジェクトから離れたらfalseにする
+            hitObj.transform.GetChild(1).gameObject.SetActive(false);
+            hitObj = null;
+        }
     }
 }

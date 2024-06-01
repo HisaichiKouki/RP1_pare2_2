@@ -19,7 +19,7 @@ public class YadoScript : MonoBehaviour
     void Start()
     {
         childObj = transform.GetChild(0).gameObject;
-        childObj2 = transform.GetChild(1).gameObject;
+        childObj2 = transform.GetChild(2).gameObject;//シャッターつきの画像
         levelCount = 0;
         collider=GetComponent<CapsuleCollider2D>();
         playerScript=FindAnyObjectByType<PlayerScript>();
