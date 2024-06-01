@@ -1613,7 +1613,7 @@ GameObject:
   - component: {fileID: 1370138997}
   m_Layer: 0
   m_Name: Koyado
-  m_TagString: Untagged
+  m_TagString: koyado
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1692,6 +1692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd31bbe2a28af544ca8206e961cf5918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!212 &1370139000
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class koyado : MonoBehaviour
 {
+    [SerializeField, Header("コヤドの速さ")] private float speed;
+    [SerializeField, Header("コヤドのHp")] private int hp;
     [SerializeField] GameObject target;
     GameObject hokora;
     Vector3 vec;
     bool alive = true;
-
-    int hp;
 
 
     // Start is called before the first frame update
@@ -36,7 +36,7 @@ public class koyado : MonoBehaviour
     }
     void Move()
     {
-        vec.x += 0.01f;
+        vec.x += speed;
         transform.position = vec;
     }
 }
