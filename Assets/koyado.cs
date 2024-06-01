@@ -7,17 +7,24 @@ public class koyado : MonoBehaviour
 {
     [SerializeField, Header("コヤドの速さ")] private float speed;
     [SerializeField, Header("コヤドのHp")] private int hp;
-    [SerializeField] GameObject target;
+    //[SerializeField] GameObject target;
     GameObject hokora;
-    Vector3 vec;
+    Vector3 newPositon;
     bool alive = true;
+
+    private Rigidbody2D rigidbody;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("Hokora");
-        vec = target.transform.position;
+        rigidbody= GetComponent<Rigidbody2D>();
+        hokora = GameObject.Find("Hokora");
+        newPositon = hokora.transform.position;
+        newPositon.x += 0.5f;
+        newPositon.y -= 0.4f;
+        newPositon.z = -1;
+        transform.position = newPositon;
         hp = 100;
     }
 
@@ -36,8 +43,7 @@ public class koyado : MonoBehaviour
     }
     void Move()
     {
-        vec.x += speed;
-        transform.position = vec;
+        rigidbody.velocity = new Vector2(speed,0);
     }
 }
 
