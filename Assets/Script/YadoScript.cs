@@ -7,7 +7,6 @@ public class YadoScript : MonoBehaviour
     // Start is called before the first frame update
 
     GameObject childObj;
-    GameObject childObj2;
     private bool isHold;
     public float[] levelUpTime;
     private float xpCount;
@@ -28,7 +27,6 @@ public class YadoScript : MonoBehaviour
     void Start()
     {
         childObj = transform.GetChild(0).gameObject;
-        childObj2 = transform.GetChild(2).gameObject;//シャッターつきの画像
         levelCount = 0;
         collider = GetComponent<CapsuleCollider2D>();
         playerScript = FindAnyObjectByType<PlayerScript>();
@@ -56,12 +54,10 @@ public class YadoScript : MonoBehaviour
                 
                 if (playerScript.GetIsHold())
                 {
-                    childObj2.SetActive(true);
                     collider.isTrigger = false;
                 }
                 else
                 {
-                    childObj2.SetActive(false);
                     collider.isTrigger = true;
                 }
                 childObj.SetActive(true);
@@ -98,7 +94,6 @@ public class YadoScript : MonoBehaviour
                 Debug.Log("isBroken");
                 collider.enabled = false;
                 childObj.SetActive(false);
-                childObj2.SetActive(false);
                 transform.GetChild(1).gameObject.SetActive(false);
             }
         }
