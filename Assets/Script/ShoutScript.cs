@@ -18,7 +18,7 @@ public class ShoutScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space)) { easeT = 0; }
+       // if (Input.GetKeyUp(KeyCode.Space)) { easeT = 0; }
 
         easeT += Time.deltaTime;
         
