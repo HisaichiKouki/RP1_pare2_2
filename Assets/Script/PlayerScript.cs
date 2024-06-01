@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     {
         playerRigidbody = gameObject.GetComponent<Rigidbody2D>();
         isYadoHold = false;
+        isHokoraHold = false;
         playerAnimeObj = transform.GetChild(0).gameObject;
         playerAnime = playerAnimeObj.GetComponent<Animator>();
         nowMoveSpeed = moveSpeed;
@@ -144,6 +145,7 @@ public class PlayerScript : MonoBehaviour
     {
         playerAnime.SetFloat("speed", input.magnitude);
         playerAnime.SetBool("isYadoHold", isYadoHold);
+        playerAnime.SetBool("isHokoraHold", isHokoraHold);
 
 
     }

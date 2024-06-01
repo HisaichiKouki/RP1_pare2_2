@@ -11,7 +11,7 @@ public class HokoraScript : MonoBehaviour
     private bool isHold;
 
     GameObject childObj;
-    private BoxCollider2D collider;
+    private CapsuleCollider2D collider;
     PlayerScript playerScript;
 
 
@@ -22,7 +22,7 @@ public class HokoraScript : MonoBehaviour
         spownCount = 0;
         isHold = false;
         childObj = transform.GetChild(0).gameObject;
-        collider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<CapsuleCollider2D>();
         playerScript = FindAnyObjectByType<PlayerScript>();
 
     }

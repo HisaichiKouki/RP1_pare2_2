@@ -12,7 +12,7 @@ public class YadoScript : MonoBehaviour
     public float[] levelUpTime;
     private float xpCount;
     private int levelCount;//åªç›ÇÃÉåÉxÉã
-    private BoxCollider2D collider;
+    private CapsuleCollider2D collider;
     PlayerScript playerScript;
 
     public void SetIsHold(bool set) { isHold = set; }
@@ -21,7 +21,7 @@ public class YadoScript : MonoBehaviour
         childObj = transform.GetChild(0).gameObject;
         childObj2 = transform.GetChild(1).gameObject;
         levelCount = 0;
-        collider=GetComponent<BoxCollider2D>();
+        collider=GetComponent<CapsuleCollider2D>();
         playerScript=FindAnyObjectByType<PlayerScript>();
     }
 
