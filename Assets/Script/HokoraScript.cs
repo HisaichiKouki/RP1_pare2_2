@@ -65,7 +65,11 @@ public class HokoraScript : MonoBehaviour
 
         if( spownPrefab == null|| isHold) { return; }
         GameObject  spownObj=Instantiate(spownPrefab);
-        spownObj.transform.position=transform.position;
+        Vector3 newPosition= transform.position;
+        newPosition.x += 0.5f;
+        newPosition.y -= 0.4f;
+        newPosition.z = -1;
+        spownObj.transform.position = newPosition;
         spownCount = spownTime;
     }
 
