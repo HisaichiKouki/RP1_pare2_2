@@ -25,6 +25,8 @@ public class YadoScript : MonoBehaviour
     int yadoNum;
 
     public bool GetIsBroken() { return isBroken; }
+    public bool GetIsHold() { return isHold; }
+
     public void SetIsHold(bool set) { isHold = set; }
 
     public int GetLevel() { return levelCount; }

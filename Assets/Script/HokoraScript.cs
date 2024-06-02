@@ -24,6 +24,7 @@ public class HokoraScript : MonoBehaviour
 
     public bool GetIsBroken() { return isBroken; }
 
+    public bool GetIsHold() { return isHold; }  
     public void SetIsHold(bool set) { isHold = set; }
     // Start is called before the first frame update
     void Start()
