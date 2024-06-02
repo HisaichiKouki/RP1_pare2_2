@@ -9,6 +9,9 @@ TagManager:
   - koyado
   - Yado1
   - Yado2
+  - Yado3
+  - Enemy
+  - EnemyFightCollision
   layers:
   - Default
   - TransparentFX

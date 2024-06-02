@@ -6,8 +6,11 @@ using UnityEngine.SocialPlatforms;
 
 public class KoyadoScript : MonoBehaviour
 {
+    GameObject parent;
+
     [SerializeField, Header("コヤドの速さ")] private float speed;
     [SerializeField, Header("コヤドのHp")] private int hp;
+    [SerializeField, Header("コヤドの攻撃力")] private int[] attackPower;
 
     //[SerializeField] GameObject target;
     bool alive = true;
@@ -46,7 +49,8 @@ public class KoyadoScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody= GetComponent<Rigidbody2D>();
+        parent = transform.parent.gameObject;
+        rigidbody = parent.GetComponent<Rigidbody2D>();
        
         hp = 100;
 
@@ -68,6 +72,8 @@ public class KoyadoScript : MonoBehaviour
         {
             alive = false;
         }
+
+       // parent.transform.position=transform.position;
 
     }
     void Move()

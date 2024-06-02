@@ -31,7 +31,7 @@ public class YadoScript : MonoBehaviour
     void Start()
     {
         childObj = transform.GetChild(0).gameObject;
-        levelCount = 2;
+        levelCount = 0;
         collider = GetComponent<CapsuleCollider2D>();
         playerScript = FindAnyObjectByType<PlayerScript>();
         isHitPoint = hitpoint;
@@ -45,6 +45,10 @@ public class YadoScript : MonoBehaviour
         else if (this.transform.tag == "Yado2")
         {
             yadoNum = 1;
+        }
+        else if (this.transform.tag == "Yado2")
+        {
+            yadoNum = 2;
         }
     }
 
@@ -158,7 +162,7 @@ public class YadoScript : MonoBehaviour
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
                 koyadoScript.SetMoveTargetObj(null);
-                collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(false);
             }
             
            
@@ -192,7 +196,7 @@ public class YadoScript : MonoBehaviour
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
                 koyadoScript.SetMoveTargetObj(null);
-                collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Koyadokari_SerachScript : MonoBehaviour
 {
-    GameObject parentObj;
+    //public GameObject parentObj;
     KoyadoScript koyadoScript;
 
 
@@ -12,7 +12,7 @@ public class Koyadokari_SerachScript : MonoBehaviour
     void Start()
     {
 
-        parentObj = transform.parent.gameObject;
+        //parentObj = transform.parent.gameObject;
         koyadoScript = FindAnyObjectByType<KoyadoScript>();
     }
 
@@ -23,8 +23,20 @@ public class Koyadokari_SerachScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //センサーに敵が当たったら
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if (koyadoScript.GetSerchMove() == false)
+            {
+                //サーチモードにする
+                koyadoScript.SetMoveTargetObj(collision.gameObject);
+                koyadoScript.SetSerchMove(true);
+                koyadoScript.SetIsMove(false);
+
+            }
+        }
         //センサーにヤドが当たったら
-        if (collision.gameObject.tag == "Yado1")
+        else if (collision.gameObject.tag == "Yado1")
         {
 
             if (!koyadoScript.GetYadoNum(0)&& koyadoScript.GetSerchMove() == false)
@@ -48,6 +60,20 @@ public class Koyadokari_SerachScript : MonoBehaviour
                 koyadoScript.SetSerchMove(true);
                 koyadoScript.SetIsMove(false);
                // koyadoScript.SetYadoNum(1, true);
+            }
+
+        }
+        else //センサーにヤドが当たったら
+        if (collision.gameObject.tag == "Yado3")
+        {
+
+            if (!koyadoScript.GetYadoNum(2) && koyadoScript.GetSerchMove() == false)
+            {
+                //サーチモードにする
+                koyadoScript.SetMoveTargetObj(collision.gameObject);
+                koyadoScript.SetSerchMove(true);
+                koyadoScript.SetIsMove(false);
+                // koyadoScript.SetYadoNum(1, true);
             }
 
         }
