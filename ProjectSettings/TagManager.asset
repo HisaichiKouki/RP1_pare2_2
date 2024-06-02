@@ -12,6 +12,7 @@ TagManager:
   - Yado3
   - Enemy
   - EnemyFightCollision
+  - EnemyHokora
   layers:
   - Default
   - TransparentFX
