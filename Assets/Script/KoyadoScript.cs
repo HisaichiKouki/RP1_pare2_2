@@ -8,12 +8,17 @@ public class KoyadoScript : MonoBehaviour
 {
     [SerializeField, Header("コヤドの速さ")] private float speed;
     [SerializeField, Header("コヤドのHp")] private int hp;
+
     //[SerializeField] GameObject target;
     bool alive = true;
 
     bool isMove;
     bool serchMove;
     bool attack;
+
+    bool[] YadoNum= new bool[3];
+
+    int currentLevel;
 
     private Rigidbody2D rigidbody;
 
@@ -27,6 +32,14 @@ public class KoyadoScript : MonoBehaviour
     public bool GetSerchMove() { return serchMove; }
     public void SetAttack(bool set) { attack = set; }
     public void SetIsMove(bool set) { isMove = set; }
+    public void AddLevel(int set) 
+    { 
+        currentLevel += set;
+        Debug.Log("koyadoLevel=" + currentLevel);
+    }
+
+    public void SetYadoNum(int num,bool set) { YadoNum[num] = set; }
+    public bool GetYadoNum(int num) { return YadoNum[num]; }
 
     public void SetMoveTargetObj(GameObject targetObj) {  moveTargetObj = targetObj; }
 
@@ -40,6 +53,7 @@ public class KoyadoScript : MonoBehaviour
         isMove = true;
         serchMove = false;
         attack = false;
+        currentLevel = 1;
     }
 
     // Update is called once per frame
@@ -73,6 +87,16 @@ public class KoyadoScript : MonoBehaviour
        
         rigidbody.velocity = newVelocity.normalized * speed;
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }
 

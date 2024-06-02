@@ -22,17 +22,30 @@ public class YadoScript : MonoBehaviour
     float respownCount;
     [SerializeField, Header("リスポーンする地点")] private Vector2 respownPos;
 
+    int yadoNum;
+
     public bool GetIsBroken() { return isBroken; }
     public void SetIsHold(bool set) { isHold = set; }
+
+    public int GetLevel() { return levelCount; }
     void Start()
     {
         childObj = transform.GetChild(0).gameObject;
-        levelCount = 0;
+        levelCount = 2;
         collider = GetComponent<CapsuleCollider2D>();
         playerScript = FindAnyObjectByType<PlayerScript>();
         isHitPoint = hitpoint;
         isBroken = false;
         respownCount = 0;
+
+        if (this.transform.tag == "Yado1")
+        {
+            yadoNum = 0;
+        }
+        else if (this.transform.tag == "Yado2")
+        {
+            yadoNum = 1;
+        }
     }
 
     // Update is called once per frame
@@ -51,7 +64,7 @@ public class YadoScript : MonoBehaviour
             else
             {
 
-                
+
                 if (playerScript.GetIsHold())
                 {
                     collider.isTrigger = false;
@@ -74,7 +87,7 @@ public class YadoScript : MonoBehaviour
 
             Respown();
         }
-        
+
 
     }
 
@@ -97,7 +110,7 @@ public class YadoScript : MonoBehaviour
                 transform.GetChild(1).gameObject.SetActive(false);
             }
         }
-        
+
     }
 
     void Respown()
@@ -118,7 +131,7 @@ public class YadoScript : MonoBehaviour
 
     void LevelUP()
     {
-        if (levelCount != levelUpTime.Length&& levelCount>=0)
+        if (levelCount != levelUpTime.Length && levelCount >= 0)
         {
             xpCount += Time.deltaTime;
             //ヤドの経験値がレベル区分の量に達したらレベルアップする
@@ -127,6 +140,59 @@ public class YadoScript : MonoBehaviour
                 xpCount = 0;
                 levelCount++;
                 Debug.Log("nowLevel=" + levelCount);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "koyado")
+        {
+            KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+
+            //まだ同じヤドに当たってない時レベルアップする
+            if (!koyadoScript.GetYadoNum(yadoNum))
+            {
+                koyadoScript.AddLevel(levelCount);
+                
+                koyadoScript.SetSerchMove(false);
+                koyadoScript.SetIsMove(true);
+                koyadoScript.SetMoveTargetObj(null);
+                collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            
+           
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //if (collision.gameObject.tag == "koyado")
+        //{
+        //    KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+
+        //    koyadoScript.SetSerchMove(false);
+        //    koyadoScript.SetIsMove(true);
+        //    koyadoScript.SetMoveTargetObj(null);
+        //    collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        //}
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "koyado")
+        {
+
+            KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+
+            if (!koyadoScript.GetYadoNum(yadoNum))
+            {
+                //こっちでヤドでレベルアップしたフラグをtrueにする(不意のフラグ操作を防ぐため)
+                koyadoScript.SetYadoNum(yadoNum, true);
+                //koyadoScript.AddLevel(levelCount);
+                koyadoScript.SetSerchMove(false);
+                koyadoScript.SetIsMove(true);
+                koyadoScript.SetMoveTargetObj(null);
+                collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             }
         }
     }
