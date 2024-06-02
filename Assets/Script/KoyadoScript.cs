@@ -11,7 +11,7 @@ public class KoyadoScript : MonoBehaviour
     [SerializeField, Header("コヤドの速さ")] private float speed;
     [SerializeField, Header("コヤドのHp")] private int hp;
     [SerializeField, Header("コヤドの攻撃力")] private int[] attackPower;
-    [SerializeField, Header("コヤドの攻撃感覚")] private float attackCoolTime;
+    [SerializeField, Header("コヤドの攻撃間隔")] private float attackCoolTime;
 
     //[SerializeField] GameObject target;
     bool alive = true;
@@ -44,7 +44,7 @@ public class KoyadoScript : MonoBehaviour
     public void AddLevel(int set)
     {
         currentLevel += set;
-        Debug.Log("koyadoLevel=" + currentLevel);
+        //Debug.Log("koyadoLevel=" + currentLevel);
     }
 
     public void SetYadoNum(int num, bool set) { YadoNum[num] = set; }
@@ -72,8 +72,9 @@ public class KoyadoScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
+        //  Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
 
+        Debug.Log("コヤドHP=" + currentHP);
         if (alive)
         {
             Move();
@@ -137,7 +138,7 @@ public class KoyadoScript : MonoBehaviour
         //ダメージを与える
         targetObj.GetComponent<EnemyScript>().Damage(currentAttackPower);
         attckCoolTimeCount = attackCoolTime;
-        Debug.Log("Damageを与えた！");
+        Debug.Log("敵にDamageを与えた！");
 
 
 

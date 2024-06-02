@@ -20,16 +20,22 @@ public class EnemyFightCollisionScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            //if (koyadoScript.GetSerchMove() == false)
-            //{
-            //    //サーチモードにする
-            //    koyadoScript.SetTargetObj(collision.gameObject);
-            //    koyadoScript.SetSerchMove(true);
-            //    koyadoScript.SetIsMove(false);
+       
+    }
 
-            //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "koyado")
+        {
+            if (!enemyScript.GetIsAttack())
+            {
+                //サーチモードにする
+                enemyScript.SetTargetObj(collision.gameObject);
+                enemyScript.SetSerchMove(false);
+                enemyScript.SetIsMove(false);
+                enemyScript.SetisAttack(true);
+
+            }
         }
     }
 }
