@@ -103,7 +103,7 @@ public class PlayerScript : MonoBehaviour
 
     void YadoHold()
     {
-        if (hitObj.gameObject.tag != "Yado") { return; }
+        if (hitObj.gameObject.tag != "Yado1"&& hitObj.gameObject.tag != "Yado2" && hitObj.gameObject.tag != "Yado3") { return; }
         isYadoHold = true;
         holdObj = hitObj;
         holdObj.GetComponent<YadoScript>().SetIsHold(true);
@@ -171,7 +171,8 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Yado" || collision.gameObject.tag == "Hokora")
+        if (collision.gameObject.tag == "Yado1" || collision.gameObject.tag == "Yado2" || collision.gameObject.tag == "Yado3" ||
+            collision.gameObject.tag == "Hokora")
         {
             //元のオブジェクトの表示を消した後、新しい方を表示する
             if (hitObj != null) { hitObj.transform.GetChild(1).gameObject.SetActive(false); }
@@ -183,7 +184,8 @@ public class PlayerScript : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Yado" || collision.gameObject.tag == "Hokora")
+        if (collision.gameObject.tag == "Yado1" || collision.gameObject.tag == "Yado2" || collision.gameObject.tag == "Yado3" ||
+            collision.gameObject.tag == "Hokora")
         {
             //オブジェクトから離れたらfalseにする
             hitObj.transform.GetChild(1).gameObject.SetActive(false);

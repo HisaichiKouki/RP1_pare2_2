@@ -48,5 +48,43 @@ public class EnemyFightCollisionScript : MonoBehaviour
 
             }
         }
+        else if (collision.gameObject.tag == "Yado2")
+        {
+            if (!enemyScript.GetIsAttack())
+            {
+                //攻撃モードにする
+                enemyScript.SetTargetObj(collision.gameObject);
+                enemyScript.SetSerchMove(false);
+                enemyScript.SetIsMove(false);
+                enemyScript.SetisAttack(true);
+
+            }
+        }
+        else if (collision.gameObject.tag == "Yado3")
+        {
+            if (!enemyScript.GetIsAttack())
+            {
+                //攻撃モードにする
+                enemyScript.SetTargetObj(collision.gameObject);
+                enemyScript.SetSerchMove(false);
+                enemyScript.SetIsMove(false);
+                enemyScript.SetisAttack(true);
+
+            }
+        }
+        else if (collision.gameObject.tag == "Hokora")
+        {
+            if (!enemyScript.GetIsAttack())
+            {
+                //攻撃モードにする
+                enemyScript.SetTargetObj(collision.gameObject);
+                enemyScript.SetSerchMove(false);
+                enemyScript.SetIsMove(false);
+                enemyScript.SetisAttack(true);
+
+            }
+        }
     }
+
+   
 }

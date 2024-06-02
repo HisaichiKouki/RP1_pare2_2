@@ -45,19 +45,19 @@ public class EnemyScript : MonoBehaviour
 
         currentAttackPower = attackPower;
 
-        rigidbody =parent.GetComponent<Rigidbody2D>();
+        rigidbody = parent.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
+        // Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
         Debug.Log("敵HP=" + currentHP);
 
         Move();
         SerchMove();
         Attack();
-        
+
     }
 
 
@@ -112,19 +112,49 @@ public class EnemyScript : MonoBehaviour
         {
             targetObj.GetComponent<KoyadoScript>().Damage(currentAttackPower);
             Debug.Log("コヤドにDamageを与えた！");
-        }else if (targetObj.transform.tag == "Yado1")
+        }
+        else if (targetObj.transform.tag == "Yado1")
         {
-            targetObj.GetComponent<YadoScript>().Damage(currentAttackPower);
-            
-            if (targetObj.GetComponent<YadoScript>().GetIsBroken())
-            {
-                attckCoolTimeCount = 0;
-                isAttack = false;
-                isMove = true;
-            }
-            Debug.Log("ヤドにDamageを与えた！");
+            YadoAttack();
+        }
+        else if (targetObj.transform.tag == "Yado2")
+        {
+            YadoAttack();
+        }
+        else if (targetObj.transform.tag == "Yado3")
+        {
+            YadoAttack();
+        }
+        else if (targetObj.transform.tag == "Hokora")
+        {
+            HokoraAttack();
         }
         attckCoolTimeCount = attackCoolTime;
-       
+
+    }
+
+    void YadoAttack()
+    {
+        targetObj.GetComponent<YadoScript>().Damage(currentAttackPower);
+
+        if (targetObj.GetComponent<YadoScript>().GetIsBroken())
+        {
+            attckCoolTimeCount = 0;
+            isAttack = false;
+            isMove = true;
+        }
+        Debug.Log("ヤドにDamageを与えた！");
+    }
+    void HokoraAttack()
+    {
+        targetObj.GetComponent<HokoraScript>().Damage(currentAttackPower);
+
+        if (targetObj.GetComponent<HokoraScript>().GetIsBroken())
+        {
+            attckCoolTimeCount = 0;
+            isAttack = false;
+            isMove = true;
+        }
+        Debug.Log("ホコラにDamageを与えた！");
     }
 }
