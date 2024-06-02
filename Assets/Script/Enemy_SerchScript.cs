@@ -33,6 +33,18 @@ public class Enemy_SerchScript : MonoBehaviour
 
                 }
             }
+            else if (collision.gameObject.tag == "Hokora")
+            {
+
+                if (enemyScript.GetSerchMove() == false)
+                {
+                    //サーチモードにする
+                    enemyScript.SetTargetObj(collision.gameObject);
+                    enemyScript.SetSerchMove(true);
+                    enemyScript.SetIsMove(false);
+
+                }
+            }
             //センサーにヤドが当たったら
             else if (collision.gameObject.tag == "Yado1")
             {

@@ -112,6 +112,17 @@ public class EnemyScript : MonoBehaviour
         {
             targetObj.GetComponent<KoyadoScript>().Damage(currentAttackPower);
             Debug.Log("コヤドにDamageを与えた！");
+        }else if (targetObj.transform.tag == "Yado1")
+        {
+            targetObj.GetComponent<YadoScript>().Damage(currentAttackPower);
+            
+            if (targetObj.GetComponent<YadoScript>().GetIsBroken())
+            {
+                attckCoolTimeCount = 0;
+                isAttack = false;
+                isMove = true;
+            }
+            Debug.Log("ヤドにDamageを与えた！");
         }
         attckCoolTimeCount = attackCoolTime;
        

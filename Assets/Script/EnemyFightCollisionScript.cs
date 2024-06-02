@@ -29,7 +29,18 @@ public class EnemyFightCollisionScript : MonoBehaviour
         {
             if (!enemyScript.GetIsAttack())
             {
-                //サーチモードにする
+                //攻撃モードにする
+                enemyScript.SetTargetObj(collision.gameObject);
+                enemyScript.SetSerchMove(false);
+                enemyScript.SetIsMove(false);
+                enemyScript.SetisAttack(true);
+
+            }
+        }else if(collision.gameObject.tag == "Yado1")
+        {
+            if (!enemyScript.GetIsAttack())
+            {
+                //攻撃モードにする
                 enemyScript.SetTargetObj(collision.gameObject);
                 enemyScript.SetSerchMove(false);
                 enemyScript.SetIsMove(false);

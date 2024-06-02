@@ -80,10 +80,7 @@ public class YadoScript : MonoBehaviour
                 childObj.SetActive(true);
                 collider.enabled = true;
 
-                if (Input.GetKeyDown(KeyCode.G))
-                {
-                    Damage();
-                }
+
             }
         }
         else
@@ -95,11 +92,11 @@ public class YadoScript : MonoBehaviour
 
     }
 
-    void Damage()
+    public void Damage(int value)
     {
         if (levelCount >= 0)
         {
-            isHitPoint--;
+            isHitPoint -= value;
             Debug.Log("isHitPoint=" + isHitPoint);
 
             if (isHitPoint <= 0)
@@ -158,14 +155,14 @@ public class YadoScript : MonoBehaviour
             if (!koyadoScript.GetYadoNum(yadoNum))
             {
                 koyadoScript.AddLevel(levelCount);
-                
+
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
                 koyadoScript.SetTargetObj(null);
                 collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(false);
             }
-            
-           
+
+
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
