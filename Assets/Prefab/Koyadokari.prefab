@@ -133,7 +133,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 1
---- !u!1 &8884345566271972500
+--- !u!1 &8780903846358555428
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,10 +141,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 74423860708643934}
-  - component: {fileID: 4863698087650299611}
-  - component: {fileID: 841750180190646939}
-  - component: {fileID: 484669883435905258}
+  - component: {fileID: 4121694057607145668}
+  - component: {fileID: 8757967916355969093}
+  - component: {fileID: 3507939942818017043}
+  - component: {fileID: 7232291234217569801}
   m_Layer: 0
   m_Name: Koyadokari_body
   m_TagString: koyado
@@ -152,13 +152,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &74423860708643934
+--- !u!4 &4121694057607145668
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8884345566271972500}
+  m_GameObject: {fileID: 8780903846358555428}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -167,13 +167,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7039431364671244075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4863698087650299611
+--- !u!212 &8757967916355969093
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8884345566271972500}
+  m_GameObject: {fileID: 8780903846358555428}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -219,13 +219,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &841750180190646939
+--- !u!114 &3507939942818017043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8884345566271972500}
+  m_GameObject: {fileID: 8780903846358555428}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd31bbe2a28af544ca8206e961cf5918, type: 3}
@@ -233,14 +233,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   hp: 21
-  attackPower: 
---- !u!58 &484669883435905258
+  attackPower: 01000000
+  attackCoolTime: 1
+--- !u!58 &7232291234217569801
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8884345566271972500}
+  m_GameObject: {fileID: 8780903846358555428}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -299,7 +300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 74423860708643934}
+  - {fileID: 4121694057607145668}
   - {fileID: 3525875645414673732}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

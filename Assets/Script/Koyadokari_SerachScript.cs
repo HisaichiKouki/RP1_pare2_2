@@ -29,7 +29,7 @@ public class Koyadokari_SerachScript : MonoBehaviour
             if (koyadoScript.GetSerchMove() == false)
             {
                 //サーチモードにする
-                koyadoScript.SetMoveTargetObj(collision.gameObject);
+                koyadoScript.SetTargetObj(collision.gameObject);
                 koyadoScript.SetSerchMove(true);
                 koyadoScript.SetIsMove(false);
 
@@ -42,7 +42,7 @@ public class Koyadokari_SerachScript : MonoBehaviour
             if (!koyadoScript.GetYadoNum(0)&& koyadoScript.GetSerchMove() == false)
             {
                 //サーチモードにする
-                koyadoScript.SetMoveTargetObj(collision.gameObject);
+                koyadoScript.SetTargetObj(collision.gameObject);
                 koyadoScript.SetSerchMove(true);
                 koyadoScript.SetIsMove(false);
                
@@ -56,7 +56,7 @@ public class Koyadokari_SerachScript : MonoBehaviour
             if (!koyadoScript.GetYadoNum(1) && koyadoScript.GetSerchMove() == false)
             {
                 //サーチモードにする
-                koyadoScript.SetMoveTargetObj(collision.gameObject);
+                koyadoScript.SetTargetObj(collision.gameObject);
                 koyadoScript.SetSerchMove(true);
                 koyadoScript.SetIsMove(false);
                // koyadoScript.SetYadoNum(1, true);
@@ -70,7 +70,7 @@ public class Koyadokari_SerachScript : MonoBehaviour
             if (!koyadoScript.GetYadoNum(2) && koyadoScript.GetSerchMove() == false)
             {
                 //サーチモードにする
-                koyadoScript.SetMoveTargetObj(collision.gameObject);
+                koyadoScript.SetTargetObj(collision.gameObject);
                 koyadoScript.SetSerchMove(true);
                 koyadoScript.SetIsMove(false);
                 // koyadoScript.SetYadoNum(1, true);

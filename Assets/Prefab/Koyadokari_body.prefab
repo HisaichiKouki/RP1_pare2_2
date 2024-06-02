@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   hp: 21
-  attackPower: 
+  attackPower: 01000000
 --- !u!58 &7141337625222764578
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -161,7 +161,7 @@ public class YadoScript : MonoBehaviour
                 
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
-                koyadoScript.SetMoveTargetObj(null);
+                koyadoScript.SetTargetObj(null);
                 collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(false);
             }
             
@@ -195,7 +195,7 @@ public class YadoScript : MonoBehaviour
                 //koyadoScript.AddLevel(levelCount);
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
-                koyadoScript.SetMoveTargetObj(null);
+                koyadoScript.SetTargetObj(null);
                 collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
             }
         }
