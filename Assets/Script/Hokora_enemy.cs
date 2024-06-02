@@ -15,7 +15,7 @@ public class Hokora_enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        isHitPoint = hitPoint;
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class Hokora_enemy : MonoBehaviour
     {
 
         isHitPoint -= value;
-        Debug.Log("isHitPoint=" + isHitPoint);
+        Debug.Log("テキホコラisHitPoint=" + isHitPoint);
 
         if (isHitPoint <= 0)
         {

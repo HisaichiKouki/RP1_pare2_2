@@ -136,7 +136,14 @@ public class KoyadoScript : MonoBehaviour
         }
 
         //ダメージを与える
-        targetObj.GetComponent<EnemyScript>().Damage(currentAttackPower);
+        if (targetObj.gameObject.tag=="EnemyBody")
+        {
+            targetObj.GetComponent<EnemyScript>().Damage(currentAttackPower);
+
+        }else if (targetObj.gameObject.tag == "EnemyHokora")
+        {
+            targetObj.GetComponent<Hokora_enemy>().Damage(currentAttackPower);
+        }
         attckCoolTimeCount = attackCoolTime;
         Debug.Log("敵にDamageを与えた！");
 
@@ -162,8 +169,16 @@ public class KoyadoScript : MonoBehaviour
                 isMove = false;
                 isAttack = true;
             }
-           
-
+        }else if (collision.gameObject.tag == "EnemyHokora")
+        {
+            if (!isAttack)
+            {
+                //コライダーの親の子の1番目をターゲットにする
+                targetObj = collision.gameObject;
+                serchMove = false;
+                isMove = false;
+                isAttack = true;
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - EnemyFightCollision
   - EnemyHokora
+  - EnemyBody
   layers:
   - Default
   - TransparentFX

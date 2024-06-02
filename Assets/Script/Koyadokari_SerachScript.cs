@@ -24,7 +24,7 @@ public class Koyadokari_SerachScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //センサーに敵が当たったら
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "EnemyBody")
         {
             if (koyadoScript.GetSerchMove() == false)
             {
@@ -68,6 +68,20 @@ public class Koyadokari_SerachScript : MonoBehaviour
         {
 
             if (!koyadoScript.GetYadoNum(2) && koyadoScript.GetSerchMove() == false)
+            {
+                //サーチモードにする
+                koyadoScript.SetTargetObj(collision.gameObject);
+                koyadoScript.SetSerchMove(true);
+                koyadoScript.SetIsMove(false);
+                // koyadoScript.SetYadoNum(1, true);
+            }
+
+        }
+        else //センサーに敵ホコラが当たったら
+        if (collision.gameObject.tag == "EnemyHokora")
+        {
+
+            if ( koyadoScript.GetSerchMove() == false)
             {
                 //サーチモードにする
                 koyadoScript.SetTargetObj(collision.gameObject);
