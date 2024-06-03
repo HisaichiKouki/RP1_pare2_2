@@ -12,7 +12,7 @@ public class KoyadoScript : MonoBehaviour
     [SerializeField, Header("コヤドのHp")] private int hp;
     [SerializeField, Header("コヤドの攻撃力")] private int[] attackPower;
     [SerializeField, Header("コヤドの攻撃間隔")] private float attackCoolTime;
-
+    [SerializeField, Header("デバッグ用、コヤド初期レベル")] private int initlevel;
     //[SerializeField] GameObject target;
     bool alive = true;
 
@@ -64,7 +64,7 @@ public class KoyadoScript : MonoBehaviour
         isMove = true;
         serchMove = false;
         isAttack = false;
-        currentLevel = 1;
+        currentLevel = initlevel;
         attckCoolTimeCount = 0;
         currentAttackPower = attackPower[0];
     }

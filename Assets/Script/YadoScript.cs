@@ -22,6 +22,8 @@ public class YadoScript : MonoBehaviour
     float respownCount;
     [SerializeField, Header("リスポーンする地点")] private Vector2 respownPos;
 
+    [SerializeField, Header("デバッグ用、初期レベル")] private int intlevel;
+
     int yadoNum;
 
     public bool GetIsBroken() { return isBroken; }
@@ -33,7 +35,7 @@ public class YadoScript : MonoBehaviour
     void Start()
     {
         childObj = transform.GetChild(0).gameObject;
-        levelCount = 0;
+        levelCount = intlevel;
         collider = GetComponent<CapsuleCollider2D>();
         playerScript = FindAnyObjectByType<PlayerScript>();
         isHitPoint = hitpoint;
