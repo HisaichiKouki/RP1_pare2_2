@@ -13,6 +13,10 @@ public class KoyadoScript : MonoBehaviour
     [SerializeField, Header("コヤドの攻撃力")] private int[] attackPower;
     [SerializeField, Header("コヤドの攻撃間隔")] private float attackCoolTime;
     [SerializeField, Header("デバッグ用、コヤド初期レベル")] private int initLevel;
+    [SerializeField, Header("コヤドカリのテクスチャ")] private GameObject[] koyadoTex;
+    [SerializeField, Header("コヤドカリのサイズ")] private float[] size;
+
+    [SerializeField] private GameObject serathObj;
 
     //[SerializeField] GameObject target;
     bool alive = true;
@@ -35,7 +39,55 @@ public class KoyadoScript : MonoBehaviour
 
     GameObject targetObj;
     Vector2 newVelocity;
+    void SetParameter()
+    {
+        for (int i = 0; i < koyadoTex.Length; i++)
+        {
+            koyadoTex[i].SetActive(false);
+        }
+        if (currentLevel >= 9)
+        {
+            currentSpeed = speed[3];//ここで要素を決める
+            currentHP = hp[3];
+            currentAttackPower = attackPower[3];
+            koyadoTex[3].SetActive(true);
+            transform.localScale = new Vector3(size[3], size[3], 1);
 
+            serathObj.transform.localScale *= size[3] + 1.0f;
+        }
+        else if (currentLevel >= 6)
+        {
+            currentSpeed = speed[2];//ここで要素を決める
+            currentHP = hp[2];
+            currentAttackPower = attackPower[2];
+            koyadoTex[2].SetActive(true);
+          
+            transform.localScale = new Vector3(size[2], size[2],1);
+            serathObj.transform.localScale *= size[2] + 1.0f;
+
+        }
+        else if (currentLevel >= 2)
+        {
+            currentSpeed = speed[1];//ここで要素を決める
+            currentHP = hp[1];
+            currentAttackPower = attackPower[1];
+            koyadoTex[1].SetActive(true);
+            transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+
+            transform.localScale = new Vector3(size[1], size[1],1);
+            serathObj.transform.localScale *= size[1] + 1.0f;
+        }
+        else
+        {
+            currentSpeed = speed[0];//ここで要素を決める
+            currentHP = hp[0];
+            currentAttackPower = attackPower[0];
+            koyadoTex[0].SetActive(true);
+
+            transform.localScale = new Vector3(size[0], size[0], 1);
+            serathObj.transform.localScale *= size[0] + 1.0f;
+        }
+    }
 
     //子ヤドのセンサーがヤド、もしくは敵を見つけたらtrueにし、ターゲットの方向にすすむ
     //ヤドが子ヤドに当たる、もしくは敵と戦闘になったらfalseに
@@ -52,36 +104,7 @@ public class KoyadoScript : MonoBehaviour
         //Debug.Log("koyadoLevel=" + currentLevel);
     }
 
-    void SetParameter()
-    {
-        if (currentLevel >= 9)
-        {
-            currentSpeed = speed[3];//ここで要素を決める
-            currentHP = hp[3];
-            currentAttackPower = attackPower[3];
-
-        }
-        else if (currentLevel >= 6)
-        {
-            currentSpeed = speed[2];//ここで要素を決める
-            currentHP = hp[2];
-            currentAttackPower = attackPower[2];
-
-        }
-        else if (currentLevel >= 2)
-        {
-            currentSpeed = speed[1];//ここで要素を決める
-            currentHP = hp[1];
-            currentAttackPower = attackPower[1];
-
-        }
-        else
-        {
-            currentSpeed = speed[0];//ここで要素を決める
-            currentHP = hp[0];
-            currentAttackPower = attackPower[0];
-        }
-    }
+    
 
     public void SetYadoNum(int num, bool set) { YadoNum[num] = set; }
     public bool GetYadoNum(int num) { return YadoNum[num]; }
@@ -187,6 +210,8 @@ public class KoyadoScript : MonoBehaviour
 
 
     }
+
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
