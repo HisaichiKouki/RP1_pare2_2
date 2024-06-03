@@ -34,6 +34,7 @@ public class KoyadoScript : MonoBehaviour
 
 
     int currentLevel;
+    Vector3 initialSerchScale;
 
     private Rigidbody2D rigidbody;
 
@@ -51,9 +52,11 @@ public class KoyadoScript : MonoBehaviour
             currentHP = hp[3];
             currentAttackPower = attackPower[3];
             koyadoTex[3].SetActive(true);
-            transform.localScale = new Vector3(size[3], size[3], 1);
 
-            serathObj.transform.localScale *= size[3] + 1.0f;
+            transform.localScale = new Vector3(size[3], size[3], 1);
+            serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
+            serathObj.transform.localPosition = new Vector3(3.3f, 0, -1.0f);
+
         }
         else if (currentLevel >= 6)
         {
@@ -63,7 +66,8 @@ public class KoyadoScript : MonoBehaviour
             koyadoTex[2].SetActive(true);
           
             transform.localScale = new Vector3(size[2], size[2],1);
-            serathObj.transform.localScale *= size[2] + 1.0f;
+            serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
+            serathObj.transform.localPosition = new Vector3(2.54f, 0, -1.0f);
 
         }
         else if (currentLevel >= 2)
@@ -72,10 +76,11 @@ public class KoyadoScript : MonoBehaviour
             currentHP = hp[1];
             currentAttackPower = attackPower[1];
             koyadoTex[1].SetActive(true);
-            transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
 
             transform.localScale = new Vector3(size[1], size[1],1);
-            serathObj.transform.localScale *= size[1] + 1.0f;
+            serathObj.transform.localScale = initialSerchScale*(size[1] + 1.0f);
+            serathObj.transform.localPosition = new Vector3(1.94f, 0, -1.0f);
+
         }
         else
         {
@@ -85,7 +90,9 @@ public class KoyadoScript : MonoBehaviour
             koyadoTex[0].SetActive(true);
 
             transform.localScale = new Vector3(size[0], size[0], 1);
-            serathObj.transform.localScale *= size[0] + 1.0f;
+            //serathObj.transform.localScale = size[0];
+            serathObj.transform.localPosition = new Vector3(1.22f, 0, -1.0f);
+
         }
     }
 
@@ -124,6 +131,7 @@ public class KoyadoScript : MonoBehaviour
         serchMove = false;
         isAttack = false;
         currentLevel = initLevel;
+        initialSerchScale = serathObj.transform.localScale;
         SetParameter();
         attckCoolTimeCount = 0;
        
