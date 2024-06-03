@@ -44,6 +44,7 @@ public class EnemyScript : MonoBehaviour
         isAttack = false;
 
         currentAttackPower = attackPower;
+        attckCoolTimeCount = attackCoolTime;
 
         rigidbody = parent.GetComponent<Rigidbody2D>();
     }
@@ -94,7 +95,7 @@ public class EnemyScript : MonoBehaviour
         //‘ŠŽè‚ð“|‚µ‚½Žž
         if (targetObj == null)
         {
-            attckCoolTimeCount = 0;
+            attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
             return;

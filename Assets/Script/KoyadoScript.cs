@@ -133,7 +133,7 @@ public class KoyadoScript : MonoBehaviour
         currentLevel = initLevel;
         initialSerchScale = serathObj.transform.localScale;
         SetParameter();
-        attckCoolTimeCount = 0;
+        attckCoolTimeCount = attackCoolTime;
        
     }
 
@@ -190,7 +190,7 @@ public class KoyadoScript : MonoBehaviour
         //‘ŠŽè‚ð“|‚µ‚½Žž
         if (targetObj==null) 
         {
-            attckCoolTimeCount = 0;
+            attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
             return;
