@@ -170,7 +170,19 @@ public class KoyadoScript : MonoBehaviour
     void SerchMove()
     {
         if (!serchMove || targetObj == null) { return; }
-
+        if (targetObj.gameObject.tag==("Yado1")|| targetObj.gameObject.tag == "Yado2" || targetObj.gameObject.tag == "Yado3")
+        {
+            if (targetObj.GetComponent<YadoScript>().GetIsHold())
+            {
+              
+                isAttack = false;
+                isMove = true;
+                serchMove = false;
+                targetObj = null;
+                return;
+            }
+        }
+        
         newVelocity = targetObj.transform.position - transform.position;
 
         rigidbody.velocity = newVelocity.normalized * currentSpeed;
@@ -196,7 +208,7 @@ public class KoyadoScript : MonoBehaviour
             isMove = true;
             return;
         }
-
+        
         //攻撃のクールタイムが残ってる時
         if (attckCoolTimeCount > 0)
         {

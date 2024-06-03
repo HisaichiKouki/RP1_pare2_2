@@ -52,7 +52,7 @@ public class YadoSuctionScript : MonoBehaviour
                 {
                     koyadoScript.SetIsMove(false);
                     koyadoScript.SetSerchMove(true);
-                    koyadoScript.SetTargetObj(transform.gameObject);
+                    koyadoScript.SetTargetObj(transform.parent.gameObject);
                 }
             }
         }

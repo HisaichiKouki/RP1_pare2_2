@@ -143,7 +143,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (targetObj.GetComponent<YadoScript>().GetIsHold())
         {
-            attckCoolTimeCount = 0;
+            attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
             return;
@@ -152,7 +152,7 @@ public class EnemyScript : MonoBehaviour
 
         if (targetObj.GetComponent<YadoScript>().GetIsBroken())
         {
-            attckCoolTimeCount = 0;
+            attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
         }
@@ -162,7 +162,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (targetObj.GetComponent<HokoraScript>().GetIsHold())
         {
-            attckCoolTimeCount = 0;
+            attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
             return;
@@ -171,7 +171,7 @@ public class EnemyScript : MonoBehaviour
 
         if (targetObj.GetComponent<HokoraScript>().GetIsBroken())
         {
-            attckCoolTimeCount = 0;
+            attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
         }

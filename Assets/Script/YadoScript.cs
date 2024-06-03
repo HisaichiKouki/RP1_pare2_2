@@ -166,6 +166,8 @@ public class YadoScript : MonoBehaviour
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
                 koyadoScript.SetTargetObj(null);
+
+                koyadoScript.SetYadoNum(yadoNum, true);
                 //collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(false);
                 Debug.Log("yadonum=" + yadoNum);
             }
@@ -188,21 +190,21 @@ public class YadoScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "koyado")
-        {
-            //KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
-            koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
-            if (!koyadoScript.GetYadoNum(yadoNum))
-            {
-                //こっちでヤドでレベルアップしたフラグをtrueにする(不意のフラグ操作を防ぐため)
-                koyadoScript.SetYadoNum(yadoNum, true);
-                //koyadoScript.AddLevel(levelCount);
-                koyadoScript.SetSerchMove(false);
-                koyadoScript.SetIsMove(true);
-                koyadoScript.SetTargetObj(null);
-                //collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
-            }
-        }
+        //if (collision.gameObject.tag == "koyado")
+        //{
+        //    //KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+        //    koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+        //    if (!koyadoScript.GetYadoNum(yadoNum))
+        //    {
+        //        //こっちでヤドでレベルアップしたフラグをtrueにする(不意のフラグ操作を防ぐため)
+        //        koyadoScript.SetYadoNum(yadoNum, true);
+        //        //koyadoScript.AddLevel(levelCount);
+        //        koyadoScript.SetSerchMove(false);
+        //        koyadoScript.SetIsMove(true);
+        //        koyadoScript.SetTargetObj(null);
+        //        //collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
+        //    }
+        //}
         
     }
 }
