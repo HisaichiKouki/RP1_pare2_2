@@ -8,11 +8,12 @@ public class KoyadoScript : MonoBehaviour
 {
     GameObject parent;
 
-    [SerializeField, Header("コヤドの速さ")] private float speed;
-    [SerializeField, Header("コヤドのHp")] private int hp;
+    [SerializeField, Header("コヤドの速さ")] private float[] speed;
+    [SerializeField, Header("コヤドのHp")] private int[] hp;
     [SerializeField, Header("コヤドの攻撃力")] private int[] attackPower;
     [SerializeField, Header("コヤドの攻撃間隔")] private float attackCoolTime;
-    [SerializeField, Header("デバッグ用、コヤド初期レベル")] private int initlevel;
+    [SerializeField, Header("デバッグ用、コヤド初期レベル")] private int initLevel;
+
     //[SerializeField] GameObject target;
     bool alive = true;
 
@@ -20,6 +21,7 @@ public class KoyadoScript : MonoBehaviour
     bool serchMove;
     bool isAttack;
 
+    float currentSpeed;
     int currentHP;
     int currentAttackPower;
     float attckCoolTimeCount;
@@ -44,7 +46,41 @@ public class KoyadoScript : MonoBehaviour
     public void AddLevel(int set)
     {
         currentLevel += set;
+        SetParameter();
+
+
         //Debug.Log("koyadoLevel=" + currentLevel);
+    }
+
+    void SetParameter()
+    {
+        if (currentLevel >= 9)
+        {
+            currentSpeed = speed[3];//ここで要素を決める
+            currentHP = hp[3];
+            currentAttackPower = attackPower[3];
+
+        }
+        else if (currentLevel >= 6)
+        {
+            currentSpeed = speed[2];//ここで要素を決める
+            currentHP = hp[2];
+            currentAttackPower = attackPower[2];
+
+        }
+        else if (currentLevel >= 2)
+        {
+            currentSpeed = speed[1];//ここで要素を決める
+            currentHP = hp[1];
+            currentAttackPower = attackPower[1];
+
+        }
+        else
+        {
+            currentSpeed = speed[0];//ここで要素を決める
+            currentHP = hp[0];
+            currentAttackPower = attackPower[0];
+        }
     }
 
     public void SetYadoNum(int num, bool set) { YadoNum[num] = set; }
@@ -59,14 +95,15 @@ public class KoyadoScript : MonoBehaviour
         parent = transform.parent.gameObject;
         rigidbody = parent.GetComponent<Rigidbody2D>();
 
-        currentHP = hp;
+        currentHP = hp[0];
 
         isMove = true;
         serchMove = false;
         isAttack = false;
-        currentLevel = initlevel;
+        currentLevel = initLevel;
+        SetParameter();
         attckCoolTimeCount = 0;
-        currentAttackPower = attackPower[0];
+       
     }
 
     // Update is called once per frame
@@ -81,10 +118,10 @@ public class KoyadoScript : MonoBehaviour
             SerchMove();
             Attack();
         }
-        if (hp < 0)
-        {
-            alive = false;
-        }
+        //if (hp < 0)
+        //{
+        //    alive = false;
+        //}
 
         // parent.transform.position=transform.position;
 
@@ -95,7 +132,7 @@ public class KoyadoScript : MonoBehaviour
         {
             return;
         }
-        rigidbody.velocity = new Vector2(speed, 0);
+        rigidbody.velocity = new Vector2(currentSpeed, 0);
     }
 
     void SerchMove()
@@ -104,7 +141,7 @@ public class KoyadoScript : MonoBehaviour
 
         newVelocity = targetObj.transform.position - transform.position;
 
-        rigidbody.velocity = newVelocity.normalized * speed;
+        rigidbody.velocity = newVelocity.normalized * currentSpeed;
 
     }
 
