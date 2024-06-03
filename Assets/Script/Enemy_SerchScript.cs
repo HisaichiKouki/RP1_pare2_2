@@ -5,10 +5,11 @@ using UnityEngine;
 public class Enemy_SerchScript : MonoBehaviour
 {
     EnemyScript enemyScript;
+    KoyadoScript koyadoScript;
     // Start is called before the first frame update
     void Start()
     {
-        enemyScript = FindAnyObjectByType<EnemyScript>();
+        enemyScript = transform.parent.GetChild(0).GetComponent<EnemyScript>();
     }
 
     // Update is called once per frame
@@ -26,6 +27,16 @@ public class Enemy_SerchScript : MonoBehaviour
 
             if (collision.gameObject.tag == "koyado")
             {
+                koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+
+                if (!koyadoScript.GetIsAttack())
+                {
+
+                    koyadoScript.SetIsMove(false);
+                    koyadoScript.SetSerchMove(true);
+                    koyadoScript.SetTargetObj(transform.parent.GetChild(0).gameObject);
+
+                }
                 if (enemyScript.GetSerchMove() == false)
                 {
                     //サーチモードにする
@@ -93,6 +104,6 @@ public class Enemy_SerchScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
     }
 }
