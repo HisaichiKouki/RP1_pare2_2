@@ -84,6 +84,18 @@ public class EnemyFightCollisionScript : MonoBehaviour
 
             }
         }
+        else if (collision.gameObject.tag == "YadoHome")
+        {
+            if (!enemyScript.GetIsAttack())
+            {
+                //çUåÇÉÇÅ[ÉhÇ…Ç∑ÇÈ
+                enemyScript.SetTargetObj(collision.gameObject);
+                enemyScript.SetSerchMove(false);
+                enemyScript.SetIsMove(false);
+                enemyScript.SetisAttack(true);
+
+            }
+        }
     }
 
    

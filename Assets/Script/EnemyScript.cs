@@ -129,6 +129,10 @@ public class EnemyScript : MonoBehaviour
         else if (targetObj.transform.tag == "Hokora")
         {
             HokoraAttack();
+        }else if(targetObj.transform.tag == "YadoHome")
+        {
+            targetObj.GetComponent<YadoHomeScript>().Damage(currentAttackPower);
+            Debug.Log("ƒ„ƒhƒJƒŠ‚Ì‰Æ‚ÉDamage‚ğ—^‚¦‚½I");
         }
         attckCoolTimeCount = attackCoolTime;
 
