@@ -136,7 +136,7 @@ public class YadoScript : MonoBehaviour
 
     void LevelUP()
     {
-        if (levelCount != levelUpTime.Length && levelCount >= 0)
+        if (levelCount < levelUpTime.Length && levelCount >= 0)
         {
             xpCount += Time.deltaTime;
             //ヤドの経験値がレベル区分の量に達したらレベルアップする
