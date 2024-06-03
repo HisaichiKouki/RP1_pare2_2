@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YadoHomeScript : MonoBehaviour
+public class EnemyHomeScript : MonoBehaviour
 {
 
     [SerializeField] private int hitpoint;
-    private int isHitPoint; 
+    private int isHitPoint;
+
     // Start is called before the first frame update
-
-
     void Start()
     {
         isHitPoint = hitpoint;
@@ -18,7 +17,7 @@ public class YadoHomeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void Damage(int value)
@@ -28,8 +27,8 @@ public class YadoHomeScript : MonoBehaviour
 
         if (isHitPoint <= 0)
         {
-            //ゲームオーバー
-            Debug.Log("<color=red>GameOver</color>");
+            Debug.Log("<color=cyan>GameClear</color>");
+
         }
     }
 }
