@@ -50,7 +50,7 @@ public class YadoScript : MonoBehaviour
         {
             yadoNum = 1;
         }
-        else if (this.transform.tag == "Yado2")
+        else if (this.transform.tag == "Yado3")
         {
             yadoNum = 2;
         }
@@ -101,7 +101,7 @@ public class YadoScript : MonoBehaviour
         if (levelCount >= 0)
         {
             isHitPoint -= value;
-            Debug.Log("isHitPoint=" + isHitPoint);
+            //Debug.Log("isHitPoint=" + isHitPoint);
 
             if (isHitPoint <= 0)
             {
@@ -164,6 +164,7 @@ public class YadoScript : MonoBehaviour
                 koyadoScript.SetIsMove(true);
                 koyadoScript.SetTargetObj(null);
                 collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(false);
+                Debug.Log("yadonum=" + yadoNum);
             }
 
 
