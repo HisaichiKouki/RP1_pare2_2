@@ -13,7 +13,7 @@ public class YadoScript : MonoBehaviour
     private int levelCount;//現在のレベル
     private CapsuleCollider2D collider;
     PlayerScript playerScript;
-
+    KoyadoScript koyadoScript;
     [SerializeField] private int hitpoint;
     private int isHitPoint;
 
@@ -26,6 +26,7 @@ public class YadoScript : MonoBehaviour
 
     int yadoNum;
 
+    public int GetYadoNum() { return yadoNum; }
     public bool GetIsBroken() { return isBroken; }
     public bool GetIsHold() { return isHold; }
 
@@ -38,6 +39,7 @@ public class YadoScript : MonoBehaviour
         levelCount = intlevel;
         collider = GetComponent<CapsuleCollider2D>();
         playerScript = FindAnyObjectByType<PlayerScript>();
+        // koyadoScript = FindAnyObjectByType<KoyadoScript>();
         isHitPoint = hitpoint;
         isBroken = false;
         respownCount = 0;
@@ -153,7 +155,8 @@ public class YadoScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "koyado")
         {
-            KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+            koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+            // KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
 
             //まだ同じヤドに当たってない時レベルアップする
             if (!koyadoScript.GetYadoNum(yadoNum))
@@ -163,7 +166,7 @@ public class YadoScript : MonoBehaviour
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
                 koyadoScript.SetTargetObj(null);
-                collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(false);
+                //collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(false);
                 Debug.Log("yadonum=" + yadoNum);
             }
 
@@ -187,9 +190,8 @@ public class YadoScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "koyado")
         {
-
-            KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
-
+            //KoyadoScript koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
+            koyadoScript = collision.gameObject.GetComponent<KoyadoScript>();
             if (!koyadoScript.GetYadoNum(yadoNum))
             {
                 //こっちでヤドでレベルアップしたフラグをtrueにする(不意のフラグ操作を防ぐため)
@@ -198,8 +200,9 @@ public class YadoScript : MonoBehaviour
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
                 koyadoScript.SetTargetObj(null);
-                collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
+                //collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
             }
         }
+        
     }
 }

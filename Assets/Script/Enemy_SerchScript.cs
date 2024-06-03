@@ -17,10 +17,12 @@ public class Enemy_SerchScript : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        //攻撃してない時
         if (!enemyScript.GetIsAttack())
-        {         //センサーに敵が当たったら
+        {
+            //センサーに敵が当たったら
 
             if (collision.gameObject.tag == "koyado")
             {
@@ -88,5 +90,9 @@ public class Enemy_SerchScript : MonoBehaviour
 
             }
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }

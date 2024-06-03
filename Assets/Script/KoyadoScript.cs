@@ -16,7 +16,7 @@ public class KoyadoScript : MonoBehaviour
     [SerializeField, Header("コヤドカリのテクスチャ")] private GameObject[] koyadoTex;
     [SerializeField, Header("コヤドカリのサイズ")] private float[] size;
 
-    [SerializeField] private GameObject serathObj;
+   // [SerializeField] private GameObject serathObj;
 
     //[SerializeField] GameObject target;
     bool alive = true;
@@ -54,8 +54,8 @@ public class KoyadoScript : MonoBehaviour
             koyadoTex[3].SetActive(true);
 
             transform.localScale = new Vector3(size[3], size[3], 1);
-            serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
-            serathObj.transform.localPosition = new Vector3(3.3f, 0, -1.0f);
+            //serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
+            //serathObj.transform.localPosition = new Vector3(3.3f, 0, -1.0f);
 
         }
         else if (currentLevel >= 6)
@@ -66,8 +66,8 @@ public class KoyadoScript : MonoBehaviour
             koyadoTex[2].SetActive(true);
           
             transform.localScale = new Vector3(size[2], size[2],1);
-            serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
-            serathObj.transform.localPosition = new Vector3(2.54f, 0, -1.0f);
+            //serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
+            //serathObj.transform.localPosition = new Vector3(2.54f, 0, -1.0f);
 
         }
         else if (currentLevel >= 2)
@@ -78,8 +78,8 @@ public class KoyadoScript : MonoBehaviour
             koyadoTex[1].SetActive(true);
 
             transform.localScale = new Vector3(size[1], size[1],1);
-            serathObj.transform.localScale = initialSerchScale*(size[1] + 1.0f);
-            serathObj.transform.localPosition = new Vector3(1.94f, 0, -1.0f);
+            //serathObj.transform.localScale = initialSerchScale*(size[1] + 1.0f);
+            //serathObj.transform.localPosition = new Vector3(1.94f, 0, -1.0f);
 
         }
         else
@@ -91,7 +91,7 @@ public class KoyadoScript : MonoBehaviour
 
             transform.localScale = new Vector3(size[0], size[0], 1);
             //serathObj.transform.localScale = size[0];
-            serathObj.transform.localPosition = new Vector3(1.22f, 0, -1.0f);
+            //serathObj.transform.localPosition = new Vector3(1.22f, 0, -1.0f);
 
         }
     }
@@ -111,7 +111,8 @@ public class KoyadoScript : MonoBehaviour
         //Debug.Log("koyadoLevel=" + currentLevel);
     }
 
-    
+
+    public bool GetIsAttack() { return isAttack; }
 
     public void SetYadoNum(int num, bool set) { YadoNum[num] = set; }
     public bool GetYadoNum(int num) { return YadoNum[num]; }
@@ -131,7 +132,7 @@ public class KoyadoScript : MonoBehaviour
         serchMove = false;
         isAttack = false;
         currentLevel = initLevel;
-        initialSerchScale = serathObj.transform.localScale;
+       // initialSerchScale = serathObj.transform.localScale;
         SetParameter();
         attckCoolTimeCount = attackCoolTime;
        

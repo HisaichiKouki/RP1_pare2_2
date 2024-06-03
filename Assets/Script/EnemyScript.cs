@@ -37,6 +37,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speed *= -1;//ç∂Ç…ìÆÇ≠ÇΩÇﬂ
         parent = transform.parent.gameObject;
         currentHP = hp;
         isMove = true;
@@ -52,8 +53,8 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
-        Debug.Log("ìGHP=" + currentHP);
+         Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
+        //Debug.Log("ìGHP=" + currentHP);
 
         Move();
         SerchMove();
@@ -77,7 +78,7 @@ public class EnemyScript : MonoBehaviour
 
         newVelocity = targetObj.transform.position - transform.position;
 
-        rigidbody.velocity = newVelocity.normalized * speed;
+        rigidbody.velocity = newVelocity.normalized * -speed;
 
     }
     void Attack()
