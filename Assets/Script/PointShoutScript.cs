@@ -15,6 +15,8 @@ public class PointShoutScript : MonoBehaviour
     [SerializeField, Header("タイプごとのテキストの内容")] private string[] shoutTexts1;
     [SerializeField] private string[] shoutTexts2;
     [SerializeField] private string[] shoutTexts3;
+
+
     [SerializeField] private string[] shoutKoyadoLevelUP;
 
 
@@ -58,7 +60,7 @@ public class PointShoutScript : MonoBehaviour
                     //初期サイズを０に
                     text.transform.localScale = Vector3.zero;
                     koyadoLevelUp = false;
-                    coolTimeCount = setCoolTime*4;
+                    koyadoCoolTimeCount = setCoolTime*5;
                 }
             }
 
