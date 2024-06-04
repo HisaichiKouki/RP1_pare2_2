@@ -26,7 +26,11 @@ public class YadoScript : MonoBehaviour
 
     [SerializeField, Header("死骸を食べた時に増える経験値")] private float addXPpoint;
 
+    [SerializeField, Header("ヤドのレベル表示")] private GameObject[] yadoLebelTex;
     int yadoNum;
+
+    GameObject playerObj;
+    Vector3 newPosition;
 
     public int GetYadoNum() { return yadoNum; }
     public bool GetIsBroken() { return isBroken; }
@@ -37,8 +41,14 @@ public class YadoScript : MonoBehaviour
     public int GetLevel() { return levelCount; }
     void Start()
     {
+        playerObj = GameObject.FindWithTag("Player");
         childObj = transform.GetChild(0).gameObject;
         levelCount = intlevel;
+        for (int i = 0; i < yadoLebelTex.Length; i++)
+        {
+            yadoLebelTex[i].SetActive(false);
+        }
+        yadoLebelTex[levelCount].SetActive(true);
         collider = transform.GetComponent<CapsuleCollider2D>();
         playerScript = FindAnyObjectByType<PlayerScript>();
         // koyadoScript = FindAnyObjectByType<KoyadoScript>();
@@ -72,6 +82,9 @@ public class YadoScript : MonoBehaviour
 
                 childObj.SetActive(false);
                 collider.enabled = false;
+                newPosition = playerObj.transform.position;
+                newPosition.z = 0;
+                transform.position = newPosition;
             }
             else
             {
@@ -102,21 +115,32 @@ public class YadoScript : MonoBehaviour
 
     public void Damage(int value)
     {
-        if (levelCount >= 0)
-        {
-            isHitPoint -= value;
-            //Debug.Log("isHitPoint=" + isHitPoint);
 
-            if (isHitPoint <= 0)
+        isHitPoint -= value;
+        //Debug.Log("isHitPoint=" + isHitPoint);
+
+        if (isHitPoint <= 0)
+        {
+            if (levelCount > 0)
             {
                 levelCount--;
                 isHitPoint = hitpoint;
+                for (int i = 0; i < yadoLebelTex.Length; i++)
+                {
+                    yadoLebelTex[i].SetActive(false);
+                }
+                yadoLebelTex[levelCount].SetActive(true);
+            }
+            else
+            {
                 isBroken = true;
 
-                Debug.Log("isBroken");
+                Debug.Log("<color=cyan>YadoBroken=</color>");
                 collider.enabled = false;
                 childObj.SetActive(false);
                 transform.GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(2).gameObject.SetActive(false);
+                transform.GetChild(3).gameObject.SetActive(false);
             }
         }
 
@@ -135,6 +159,13 @@ public class YadoScript : MonoBehaviour
             collider.enabled = true;
             childObj.SetActive(true);
             levelCount = 0;
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(true);
+            for (int i = 0; i < yadoLebelTex.Length; i++)
+            {
+                yadoLebelTex[i].SetActive(false);
+            }
+            yadoLebelTex[levelCount].SetActive(true);
         }
     }
 
@@ -148,8 +179,14 @@ public class YadoScript : MonoBehaviour
             {
                 xpCount = 0;
                 levelCount++;
+
+                for (int i = 0; i < yadoLebelTex.Length; i++)
+                {
+                    yadoLebelTex[i].SetActive(false);
+                }
+                yadoLebelTex[levelCount].SetActive(true);
                 //Debug.Log("nowLevel=" + levelCount);
-                Debug.Log("<color=cyan>nowLevel=</color>"+levelCount+",Yadonum="+yadoNum);
+                Debug.Log("<color=cyan>nowLevel=</color>" + levelCount + ",Yadonum=" + yadoNum);
 
             }
         }
@@ -213,6 +250,6 @@ public class YadoScript : MonoBehaviour
         //        //collision.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
         //    }
         //}
-        
+
     }
 }

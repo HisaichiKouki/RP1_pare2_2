@@ -108,6 +108,7 @@ public class PlayerScript : MonoBehaviour
         holdObj = hitObj;
         holdObj.GetComponent<YadoScript>().SetIsHold(true);
         holdObj.transform.GetChild(2).gameObject.SetActive(false);
+        //holdObj.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
         Debug.Log("isYadoHold");
 
