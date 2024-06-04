@@ -28,14 +28,16 @@ public class EnemyHomeScript : MonoBehaviour
     public void Damage(int value)
     {
         isHitPoint -= value;
+        if (isHitPoint <= 0)
+        {
+            isHitPoint = 0;
+            //Debug.Log("<color=cyan>GameClear</color>");
+
+        }
         hitPointBarScript.hitPoint = isHitPoint;
 
         //Debug.Log("isHitPoint=" + isHitPoint);
 
-        if (isHitPoint <= 0)
-        {
-            //Debug.Log("<color=cyan>GameClear</color>");
-
-        }
+        
     }
 }
