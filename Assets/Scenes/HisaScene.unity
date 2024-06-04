@@ -2259,11 +2259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.6
+      value: -14.73
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.19
+      value: -1.41
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2308,7 +2308,7 @@ PrefabInstance:
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: spownerObj
       value: 
-      objectReference: {fileID: 621083873}
+      objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: respownTime
       value: 3
@@ -2317,6 +2317,14 @@ PrefabInstance:
       propertyPath: shoutCanpas
       value: 
       objectReference: {fileID: 1595574337}
+    - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
+      propertyPath: respownPos.x
+      value: -14.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
+      propertyPath: respownPos.y
+      value: -1.41
+      objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: particleprefab
       value: 
@@ -2813,7 +2821,7 @@ MonoBehaviour:
   spownTime: 2
   hitPoint: 3
   respownTime: 3
-  respownPos: {x: 0, y: 0}
+  respownPos: {x: -15.2, y: -0.46}
 --- !u!4 &519420050
 Transform:
   m_ObjectHideFlags: 0
@@ -2823,7 +2831,7 @@ Transform:
   m_GameObject: {fileID: 519420047}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.66, y: -2.44, z: 0}
+  m_LocalPosition: {x: -15.2, y: -0.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3335,52 +3343,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &621083873
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 621083875}
-  - component: {fileID: 621083874}
-  m_Layer: 0
-  m_Name: YadoRespown
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &621083874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621083873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de6a795890c35e44f8baecc39e3f1350, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respownPrefab: {fileID: 1508730990870776146, guid: 92e16585696c64740ac42139fd980695, type: 3}
-  respownTime: 3
---- !u!4 &621083875
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621083873}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.92, y: -2.27, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &645837145 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1468403724066405092, guid: 1ff2ac7ec3c31da48b403b3a0ce3e1d8, type: 3}
@@ -3965,11 +3927,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.09
+      value: -13.51
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.44
+      value: -3.16
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4018,7 +3980,7 @@ PrefabInstance:
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: spownerObj
       value: 
-      objectReference: {fileID: 621083873}
+      objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: respownTime
       value: 3
@@ -4027,6 +3989,14 @@ PrefabInstance:
       propertyPath: shoutCanpas
       value: 
       objectReference: {fileID: 2090078308}
+    - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
+      propertyPath: respownPos.x
+      value: -13.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
+      propertyPath: respownPos.y
+      value: -3.16
+      objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: particleprefab
       value: 
@@ -4204,7 +4174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &955865698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4219,7 +4189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spownPrefab: {fileID: 2492018269505014268, guid: 1de22c15b3cb1784cb15e7d37502e59d, type: 3}
   spownTime: 1
-  hitPoint: 10
+  hitPoint: 100
 --- !u!70 &955865699
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -6606,7 +6576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleprefab: {fileID: 138811146}
   particleprefab1: {fileID: 2054412441}
-  hitPoint: 1
+  hitPoint: 250
   attackPower: 1
   attackCoolTime: 2
   attackPrefab: {fileID: 3954539544080320421, guid: 83fe907268c33ba4592f65fcebb92316, type: 3}
@@ -7019,11 +6989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.22
+      value: -11.82
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.44
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4172990952064039210, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7072,7 +7042,7 @@ PrefabInstance:
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: spownerObj
       value: 
-      objectReference: {fileID: 621083873}
+      objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: respownTime
       value: 3
@@ -7081,6 +7051,14 @@ PrefabInstance:
       propertyPath: shoutCanpas
       value: 
       objectReference: {fileID: 68026290}
+    - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
+      propertyPath: respownPos.x
+      value: -11.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
+      propertyPath: respownPos.y
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: particleprefab
       value: 
@@ -7355,7 +7333,6 @@ SceneRoots:
   - {fileID: 2090078312}
   - {fileID: 519420050}
   - {fileID: 955865700}
-  - {fileID: 621083875}
   - {fileID: 457464292}
   - {fileID: 681636348}
   - {fileID: 8873699122417409111}
