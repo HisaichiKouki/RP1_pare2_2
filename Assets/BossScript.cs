@@ -22,6 +22,10 @@ public class BossScript : MonoBehaviour
     float resetTime;
     int isHitPoint;
     int nowTargetCount;
+
+    public GameObject hitPointBar;
+    HitPointBarScript hitPointBarScript;
+
     public void AddTargetCount() { if (nowTargetCount < 7) nowTargetCount++; }
     public void MinasTargetCount() { if (nowTargetCount > 0) nowTargetCount--; }
     public int GetTargetCount() { return nowTargetCount; }
@@ -35,6 +39,9 @@ public class BossScript : MonoBehaviour
         nowTargetCount = 0;
         serachScript = serachObj.GetComponent<BossAttackSerch>();
         isHitPoint = hitPoint;
+
+        hitPointBarScript = hitPointBar.GetComponent<HitPointBarScript>();
+        hitPointBarScript.hitPoint = isHitPoint;
     }
 
 
@@ -69,6 +76,7 @@ public class BossScript : MonoBehaviour
         {
             a++;
         }
+        hitPointBarScript.hitPoint = isHitPoint;
 
     }
 

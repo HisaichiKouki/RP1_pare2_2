@@ -26,6 +26,10 @@ public class EnemyScript : MonoBehaviour
     Vector2 newVelocity;
     Rigidbody2D rigidbody;
 
+    public GameObject hitPointBar;
+    HitPointBarScript hitPointBarScript;
+
+
     public void SetSerchMove(bool set) { serchMove = set; }
     public bool GetSerchMove() { return serchMove; }
     public bool GetIsAttack() { return isAttack; }
@@ -44,6 +48,8 @@ public class EnemyScript : MonoBehaviour
         isMove = true;
         serchMove = false;
         isAttack = false;
+        hitPointBarScript = hitPointBar.GetComponent<HitPointBarScript>();
+        hitPointBarScript.hitPoint = currentHP;
 
         currentAttackPower = attackPower;
         attckCoolTimeCount = attackCoolTime;
@@ -60,7 +66,7 @@ public class EnemyScript : MonoBehaviour
         Move();
         SerchMove();
         Attack();
-
+        hitPointBarScript.hitPoint = currentHP;
     }
 
 

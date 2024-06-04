@@ -16,6 +16,8 @@ public class KoyadoScript : MonoBehaviour
     [SerializeField, Header("コヤドカリのテクスチャ")] private GameObject[] koyadoTex;
     [SerializeField, Header("コヤドカリのサイズ")] private float[] size;
 
+    public GameObject hitPointBar;
+    HitPointBarScript hitPointBarScript;
     // [SerializeField] private GameObject serathObj;
 
     //[SerializeField] GameObject target;
@@ -62,7 +64,9 @@ public class KoyadoScript : MonoBehaviour
             //serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
             //serathObj.transform.localPosition = new Vector3(3.3f, 0, -1.0f);
             if (prePower != currentAttackPower)
-            { nowLevelUP = true; }
+            { nowLevelUP = true;
+                hitPointBarScript.SetLocalScale(0.1f);
+            }
 
             prePower = currentAttackPower;
         }
@@ -77,7 +81,9 @@ public class KoyadoScript : MonoBehaviour
             //serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
             //serathObj.transform.localPosition = new Vector3(2.54f, 0, -1.0f);
             if (prePower != currentAttackPower)
-            { nowLevelUP = true; }
+            { nowLevelUP = true;
+                hitPointBarScript.SetLocalScale(0.18f );
+            }
 
             prePower = currentAttackPower;
         }
@@ -93,7 +99,9 @@ public class KoyadoScript : MonoBehaviour
             //serathObj.transform.localPosition = new Vector3(1.94f, 0, -1.0f);
 
             if (prePower != currentAttackPower)
-            { nowLevelUP = true; }
+            { nowLevelUP = true;
+                hitPointBarScript.SetLocalScale(0.25f );
+            }
 
             prePower = currentAttackPower;
 
@@ -159,12 +167,16 @@ public class KoyadoScript : MonoBehaviour
         serchMove = false;
         isAttack = false;
         currentLevel = initLevel;
+        hitPointBarScript = hitPointBar.GetComponent<HitPointBarScript>();
+        hitPointBarScript.hitPoint = currentHP;
         // initialSerchScale = serathObj.transform.localScale;
         SetParameter();
         attckCoolTimeCount = attackCoolTime;
         prePower = currentAttackPower;
 
         bossScript = FindAnyObjectByType<BossScript>();
+
+        
     }
 
     // Update is called once per frame
@@ -178,6 +190,7 @@ public class KoyadoScript : MonoBehaviour
             Move();
             SerchMove();
             Attack();
+            hitPointBarScript.hitPoint = currentHP;
         }
         
             //if (hp < 0)
