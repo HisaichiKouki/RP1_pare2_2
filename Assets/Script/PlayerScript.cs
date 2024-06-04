@@ -6,6 +6,8 @@ using UnityEngine.Assertions.Must;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particleprefab;
+
     [SerializeField] private Vector2 moveSpeed;
     private Vector2 nowMoveSpeed;
     Rigidbody2D playerRigidbody;
@@ -40,6 +42,7 @@ public class PlayerScript : MonoBehaviour
         Move();
         Hold();
         Relese();
+        
 
         SetAnimator();
 
@@ -81,6 +84,7 @@ public class PlayerScript : MonoBehaviour
                 capsuleCollider.offset = new Vector2(0, 0);
                 capsuleCollider.size = new Vector2(1, 1.2f);
                 isHold = true;
+                particleprefab.Play();
                 //ここにオブジェクトごとの関数をいれる
                 YadoHold();
                 HokoraHold();
@@ -96,6 +100,7 @@ public class PlayerScript : MonoBehaviour
             capsuleCollider.offset = new Vector2(-0.03f, -0.23f);
             capsuleCollider.size = new Vector2(1, 0.5f);
             isHold = false;
+            particleprefab.Stop();
             YadoRelese();
             HokoraRelese();
         }

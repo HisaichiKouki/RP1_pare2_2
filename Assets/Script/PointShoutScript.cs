@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PointShoutScript : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particleprefab;
 
     [Header("äœãqÇÃê∫ÇÇ±Ç±Ç≈ä«óùÇ∑ÇÈ")]
     public GameObject canvas;//ÉLÉÉÉìÉoÉX
@@ -61,6 +62,7 @@ public class PointShoutScript : MonoBehaviour
                     text.transform.localScale = Vector3.zero;
                     koyadoLevelUp = false;
                     koyadoCoolTimeCount = setCoolTime*5;
+
                 }
             }
 
@@ -84,6 +86,7 @@ public class PointShoutScript : MonoBehaviour
                     text.transform.localScale = Vector3.zero;
                     isShout[0] = false;
                     coolTimeCount = setCoolTime;
+                    particleprefab.Play();
                 }
             }
             else if (isShout[1])

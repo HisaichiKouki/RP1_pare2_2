@@ -7,6 +7,7 @@ using UnityEngine.SocialPlatforms;
 public class KoyadoScript : MonoBehaviour
 {
     GameObject parent;
+    [SerializeField] private ParticleSystem particleprefab;
 
     [SerializeField, Header("コヤドの速さ")] private float[] speed;
     [SerializeField, Header("コヤドのHp")] private int[] hp;
@@ -143,6 +144,7 @@ public class KoyadoScript : MonoBehaviour
 
     public void SetTargetObj(GameObject setTargetObj) { targetObj = setTargetObj; }
     public void Damage(int value) { currentHP -= value;
+        particleprefab.Play();
         if (currentHP <= 0)
         {
             Destroy(parent.gameObject);

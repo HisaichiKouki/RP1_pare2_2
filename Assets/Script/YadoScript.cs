@@ -5,6 +5,7 @@ using UnityEngine;
 public class YadoScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private ParticleSystem particleprefab;
 
     GameObject childObj;
     private bool isHold;
@@ -181,6 +182,7 @@ public class YadoScript : MonoBehaviour
             //ヤドの経験値がレベル区分の量に達したらレベルアップする
             if (xpCount >= levelUpTime[levelCount])
             {
+                particleprefab.Play();
                 SetShoutCanpas();
                 shoutCanpas.transform.GetChild(0).GetComponent<PointShoutScript>().setShout(0);
 

@@ -5,6 +5,8 @@ using static UnityEditor.SearchableEditorWindow;
 
 public class EnemyScript : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particleprefab;
+
     [SerializeField, Header("Ž€Š[‚ÌƒvƒŒƒnƒu")] private GameObject corpsePrefab;
     [SerializeField, Header("“G‚ÌHP")] private int hp;
     [SerializeField, Header("“G‚ÌˆÚ“®‘¬“x")] private float speed;
@@ -38,7 +40,9 @@ public class EnemyScript : MonoBehaviour
 
     public void SetTargetObj(GameObject setTargetObj) { targetObj = setTargetObj; }
 
-    public void Damage(int value) { currentHP -= value; }
+    public void Damage(int value) { currentHP -= value;
+        particleprefab.Play();
+    }
     // Start is called before the first frame update
     void Start()
     {
