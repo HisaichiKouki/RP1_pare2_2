@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.SearchableEditorWindow;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -79,12 +80,13 @@ public class EnemyScript : MonoBehaviour
         newVelocity = targetObj.transform.position - transform.position;
 
         rigidbody.velocity = newVelocity.normalized * -speed;
-
+        TargetOfYado();
     }
     void Attack()
     {
 
         if (!isAttack) { return; }
+        serchMove = false;
         rigidbody.velocity = Vector2.zero;
 
         //é©ï™ÇÃHPÇ™ñ≥Ç≠Ç»Ç¡ÇΩéû
@@ -148,8 +150,11 @@ public class EnemyScript : MonoBehaviour
             attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
+            targetObj = null;
+            serchMove = false;
             return;
         }
+
         targetObj.GetComponent<YadoScript>().Damage(currentAttackPower);
 
         if (targetObj.GetComponent<YadoScript>().GetIsBroken())
@@ -157,8 +162,34 @@ public class EnemyScript : MonoBehaviour
             attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
+            targetObj = null;
+            serchMove = false;
         }
         Debug.Log("ÉÑÉhÇ…DamageÇó^Ç¶ÇΩÅI");
+    }
+    void TargetOfYado()
+    {
+        if (targetObj.gameObject.tag== "Yado1"|| targetObj.gameObject.tag == "Yado2"|| targetObj.gameObject.tag == "Yado3")
+        {
+            if (targetObj.GetComponent<YadoScript>().GetIsHold())
+            {
+                attckCoolTimeCount = attackCoolTime;
+                isAttack = false;
+                isMove = true;
+                targetObj = null;
+                serchMove = false;
+                return;
+            }
+
+            if (targetObj.GetComponent<YadoScript>().GetIsBroken())
+            {
+                attckCoolTimeCount = attackCoolTime;
+                isAttack = false;
+                isMove = true;
+                targetObj = null;
+                serchMove = false;
+            }
+        }
     }
     void HokoraAttack()
     {
