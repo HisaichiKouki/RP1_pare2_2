@@ -1916,7 +1916,7 @@ Transform:
   m_GameObject: {fileID: 360212221}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.298, y: -1.05, z: -5}
+  m_LocalPosition: {x: -12.33, y: -0.99, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2299,7 +2299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: intlevel
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: addXPpoint
@@ -3971,7 +3971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: intlevel
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5241037229467761859, guid: 92e16585696c64740ac42139fd980695, type: 3}
       propertyPath: addXPpoint
@@ -4188,7 +4188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spownPrefab: {fileID: 2492018269505014268, guid: 1de22c15b3cb1784cb15e7d37502e59d, type: 3}
-  spownTime: 1
+  spownTime: 2
   hitPoint: 100
 --- !u!70 &955865699
 CapsuleCollider2D:
