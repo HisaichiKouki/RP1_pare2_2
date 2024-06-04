@@ -54,7 +54,7 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
+         //Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
         //Debug.Log("敵HP=" + currentHP);
 
         Move();
@@ -117,7 +117,7 @@ public class EnemyScript : MonoBehaviour
         if (targetObj.transform.tag == "koyado")
         {
             targetObj.GetComponent<KoyadoScript>().Damage(currentAttackPower);
-            Debug.Log("コヤドにDamageを与えた！");
+            //Debug.Log("コヤドにDamageを与えた！");
         }
         else if (targetObj.transform.tag == "Yado1")
         {
@@ -137,7 +137,7 @@ public class EnemyScript : MonoBehaviour
         }else if(targetObj.transform.tag == "YadoHome")
         {
             targetObj.GetComponent<YadoHomeScript>().Damage(currentAttackPower);
-            Debug.Log("ヤドカリの家にDamageを与えた！");
+            //Debug.Log("ヤドカリの家にDamageを与えた！");
         }
         attckCoolTimeCount = attackCoolTime;
 
@@ -166,7 +166,7 @@ public class EnemyScript : MonoBehaviour
             targetObj = null;
             serchMove = false;
         }
-        Debug.Log("ヤドにDamageを与えた！");
+        //Debug.Log("ヤドにDamageを与えた！");
     }
     void TargetOfYado()
     {
@@ -209,6 +209,6 @@ public class EnemyScript : MonoBehaviour
             isAttack = false;
             isMove = true;
         }
-        Debug.Log("ホコラにDamageを与えた！");
+        //Debug.Log("ホコラにDamageを与えた！");
     }
 }

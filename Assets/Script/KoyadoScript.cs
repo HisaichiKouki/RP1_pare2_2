@@ -43,6 +43,8 @@ public class KoyadoScript : MonoBehaviour
 
     bool nowLevelUP;
     int prePower;
+
+    BossScript bossScript;
     void SetParameter()
     {
         for (int i = 0; i < koyadoTex.Length; i++)
@@ -125,14 +127,20 @@ public class KoyadoScript : MonoBehaviour
         //Debug.Log("koyadoLevel=" + currentLevel);
     }
 
-
+    public int GetIsHitPoint() { return currentHP; }
     public bool GetIsAttack() { return isAttack; }
 
     public void SetYadoNum(int num, bool set) { YadoNum[num] = set; }
     public bool GetYadoNum(int num) { return YadoNum[num]; }
 
     public void SetTargetObj(GameObject setTargetObj) { targetObj = setTargetObj; }
-    public void Damage(int value) { currentHP -= value; }
+    public void Damage(int value) { currentHP -= value;
+        if (currentHP <= 0)
+        {
+            Destroy(parent.gameObject);
+           // bossScript.MinasTargetCount();
+        }
+    }
 
     public bool GetNowLevelUP() { return nowLevelUP; }
     public void SetNowLevelUP(bool set) { nowLevelUP = set; }
@@ -155,6 +163,8 @@ public class KoyadoScript : MonoBehaviour
         SetParameter();
         attckCoolTimeCount = attackCoolTime;
         prePower = currentAttackPower;
+
+        bossScript = FindAnyObjectByType<BossScript>();
     }
 
     // Update is called once per frame
@@ -169,14 +179,15 @@ public class KoyadoScript : MonoBehaviour
             SerchMove();
             Attack();
         }
-        //if (hp < 0)
-        //{
-        //    alive = false;
-        //}
+        
+            //if (hp < 0)
+            //{
+            //    alive = false;
+            //}
 
-        // parent.transform.position=transform.position;
+            // parent.transform.position=transform.position;
 
-    }
+        }
     void Move()
     {
         if (isAttack || !isMove)
@@ -214,11 +225,12 @@ public class KoyadoScript : MonoBehaviour
         rigidbody.velocity = Vector2.zero;
 
         //自分のHPが無くなった時
-        if (currentHP <= 0)
-        {
-            Destroy(parent.gameObject);
-            return;
-        }
+        //if (currentHP <= 0)
+        //{
+        //    //bossScript.MinasTargetCount();
+        //    Destroy(parent.gameObject);
+        //    return;
+        //}
         //相手を倒した時
         if (targetObj == null)
         {
@@ -248,6 +260,10 @@ public class KoyadoScript : MonoBehaviour
         else if (targetObj.gameObject.tag == "TekiHome")
         {
             targetObj.GetComponent<EnemyHomeScript>().Damage(currentAttackPower);
+        }
+        else if (targetObj.gameObject.tag == "BossBody")
+        {
+            targetObj.GetComponent<BossScript>().Damage(currentAttackPower);
         }
         attckCoolTimeCount = attackCoolTime;
         //Debug.Log("敵にDamageを与えた！");
@@ -289,6 +305,17 @@ public class KoyadoScript : MonoBehaviour
             }
         }
         else if (collision.gameObject.tag == "TekiHome")
+        {
+            if (!isAttack)
+            {
+                //コライダーの親の子の1番目をターゲットにする
+                targetObj = collision.gameObject;
+                serchMove = false;
+                isMove = false;
+                isAttack = true;
+            }
+        }
+        else if (collision.gameObject.tag == "BossBody")
         {
             if (!isAttack)
             {

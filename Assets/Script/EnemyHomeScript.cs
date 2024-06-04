@@ -27,7 +27,7 @@ public class EnemyHomeScript : MonoBehaviour
 
         if (isHitPoint <= 0)
         {
-            Debug.Log("<color=cyan>GameClear</color>");
+            //Debug.Log("<color=cyan>GameClear</color>");
 
         }
     }

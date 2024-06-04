@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class LevelTextScript : MonoBehaviour
 {
 
-    public GameObject parent;
+    public GameObject parentObj;
     KoyadoScript koyadoScript;
     private Text levelText;
     // Start is called before the first frame update
     void Start()
     {
-        koyadoScript= parent.GetComponent<KoyadoScript>();
+        koyadoScript= parentObj.GetComponent<KoyadoScript>();
         levelText = GetComponent<Text>();
     }
 
