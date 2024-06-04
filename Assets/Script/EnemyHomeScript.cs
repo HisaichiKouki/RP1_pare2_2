@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHomeScript : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particleprefab;
 
     [SerializeField] private int hitpoint;
     private int isHitPoint;
@@ -28,6 +29,7 @@ public class EnemyHomeScript : MonoBehaviour
     public void Damage(int value)
     {
         isHitPoint -= value;
+        particleprefab.Play();
         if (isHitPoint <= 0)
         {
             isHitPoint = 0;

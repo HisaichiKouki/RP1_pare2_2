@@ -8,14 +8,14 @@ public class AttackScript : MonoBehaviour
     private int attackPower;
     private float attackTime;
 
-    BossScript bossScript;
+   //BossScript bossScript;
     
     public void SetAttackPower(int setPower) {  attackPower = setPower; }
     public void SetAttackTime(float setTime) { attackTime = setTime; }
     // Start is called before the first frame update
     void Start()
     {
-        bossScript=FindAnyObjectByType<BossScript>();   
+        //bossScript=FindAnyObjectByType<BossScript>();   
     }
 
     // Update is called once per frame

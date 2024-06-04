@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particleprefab;
+    [SerializeField] private ParticleSystem particleprefab1;
+
     [SerializeField, Header("ボスのHP")] private int hitPoint;
     [SerializeField, Header("ボスの攻撃力")] private int attackPower;
     [SerializeField, Header("ボスの攻撃間隔")] private int attackCoolTime;
@@ -109,6 +112,8 @@ public class BossScript : MonoBehaviour
         {
             Destroy(transform.parent.gameObject);
             Debug.Log("ボスを倒した");
+            particleprefab.Play();
+            particleprefab1.Play();
 
         }
     }
