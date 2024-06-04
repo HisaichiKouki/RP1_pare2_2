@@ -29,6 +29,7 @@ public class YadoScript : MonoBehaviour
     [SerializeField, Header("ヤドのレベル表示")] private GameObject[] yadoLebelTex;
     int yadoNum;
 
+    [SerializeField, Header("歓声キャンバス")] GameObject shoutCanpas;
     GameObject playerObj;
     Vector3 newPosition;
 
@@ -38,6 +39,7 @@ public class YadoScript : MonoBehaviour
 
     public void SetIsHold(bool set) { isHold = set; }
 
+    
     public int GetLevel() { return levelCount; }
     void Start()
     {
@@ -115,6 +117,8 @@ public class YadoScript : MonoBehaviour
 
     public void Damage(int value)
     {
+        SetShoutCanpas();
+        shoutCanpas.transform.GetChild(0).GetComponent<PointShoutScript>().setShout(1);
 
         isHitPoint -= value;
         //Debug.Log("isHitPoint=" + isHitPoint);
@@ -177,6 +181,9 @@ public class YadoScript : MonoBehaviour
             //ヤドの経験値がレベル区分の量に達したらレベルアップする
             if (xpCount >= levelUpTime[levelCount])
             {
+                SetShoutCanpas();
+                shoutCanpas.transform.GetChild(0).GetComponent<PointShoutScript>().setShout(0);
+
                 xpCount = 0;
                 levelCount++;
 
@@ -207,6 +214,13 @@ public class YadoScript : MonoBehaviour
             if (!koyadoScript.GetYadoNum(yadoNum))
             {
                 koyadoScript.AddLevel(levelCount);
+                if (koyadoScript.GetComponent<KoyadoScript>().GetNowLevelUP())
+                {
+                    SetShoutCanpas();
+                    shoutCanpas.transform.GetChild(0).GetComponent<PointShoutScript>().setKoyadoLevelUpShout();
+                    koyadoScript.GetComponent<KoyadoScript>().SetNowLevelUP(false);
+                }
+
 
                 koyadoScript.SetSerchMove(false);
                 koyadoScript.SetIsMove(true);
@@ -251,5 +265,18 @@ public class YadoScript : MonoBehaviour
         //    }
         //}
 
+    }
+
+    public void NiceCover()
+    {
+        SetShoutCanpas();
+        shoutCanpas.transform.GetChild(0).GetComponent<PointShoutScript>().setShout(2);
+
+    }
+    void SetShoutCanpas()
+    {
+        Vector3 newPosition = shoutCanpas.transform.position;
+        newPosition.x=transform.position.x;
+        shoutCanpas.transform.position = newPosition;
     }
 }

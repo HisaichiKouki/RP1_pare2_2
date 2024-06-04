@@ -15,6 +15,7 @@ public class ShoutManager : MonoBehaviour
     [SerializeField] private string[] shoutTexts3;
 
     bool shoutEnabled;
+
     // Start is called before the first frame update
     void Start()
     {

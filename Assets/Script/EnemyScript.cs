@@ -147,6 +147,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (targetObj.GetComponent<YadoScript>().GetIsHold())
         {
+            targetObj.GetComponent<YadoScript>().NiceCover();
             attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;

@@ -16,7 +16,7 @@ public class KoyadoScript : MonoBehaviour
     [SerializeField, Header("コヤドカリのテクスチャ")] private GameObject[] koyadoTex;
     [SerializeField, Header("コヤドカリのサイズ")] private float[] size;
 
-   // [SerializeField] private GameObject serathObj;
+    // [SerializeField] private GameObject serathObj;
 
     //[SerializeField] GameObject target;
     bool alive = true;
@@ -40,6 +40,9 @@ public class KoyadoScript : MonoBehaviour
 
     GameObject targetObj;
     Vector2 newVelocity;
+
+    bool nowLevelUP;
+    int prePower;
     void SetParameter()
     {
         for (int i = 0; i < koyadoTex.Length; i++)
@@ -56,7 +59,10 @@ public class KoyadoScript : MonoBehaviour
             transform.localScale = new Vector3(size[3], size[3], 1);
             //serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
             //serathObj.transform.localPosition = new Vector3(3.3f, 0, -1.0f);
+            if (prePower != currentAttackPower)
+            { nowLevelUP = true; }
 
+            prePower = currentAttackPower;
         }
         else if (currentLevel >= 6)
         {
@@ -64,11 +70,14 @@ public class KoyadoScript : MonoBehaviour
             currentHP = hp[2];
             currentAttackPower = attackPower[2];
             koyadoTex[2].SetActive(true);
-          
-            transform.localScale = new Vector3(size[2], size[2],1);
+
+            transform.localScale = new Vector3(size[2], size[2], 1);
             //serathObj.transform.localScale = initialSerchScale * (size[2] + 1.0f);
             //serathObj.transform.localPosition = new Vector3(2.54f, 0, -1.0f);
+            if (prePower != currentAttackPower)
+            { nowLevelUP = true; }
 
+            prePower = currentAttackPower;
         }
         else if (currentLevel >= 2)
         {
@@ -77,9 +86,14 @@ public class KoyadoScript : MonoBehaviour
             currentAttackPower = attackPower[1];
             koyadoTex[1].SetActive(true);
 
-            transform.localScale = new Vector3(size[1], size[1],1);
+            transform.localScale = new Vector3(size[1], size[1], 1);
             //serathObj.transform.localScale = initialSerchScale*(size[1] + 1.0f);
             //serathObj.transform.localPosition = new Vector3(1.94f, 0, -1.0f);
+
+            if (prePower != currentAttackPower)
+            { nowLevelUP = true; }
+
+            prePower = currentAttackPower;
 
         }
         else
@@ -92,7 +106,7 @@ public class KoyadoScript : MonoBehaviour
             transform.localScale = new Vector3(size[0], size[0], 1);
             //serathObj.transform.localScale = size[0];
             //serathObj.transform.localPosition = new Vector3(1.22f, 0, -1.0f);
-
+            //nowLevelUP = true;
         }
     }
 
@@ -120,6 +134,9 @@ public class KoyadoScript : MonoBehaviour
     public void SetTargetObj(GameObject setTargetObj) { targetObj = setTargetObj; }
     public void Damage(int value) { currentHP -= value; }
 
+    public bool GetNowLevelUP() { return nowLevelUP; }
+    public void SetNowLevelUP(bool set) { nowLevelUP = set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -132,10 +149,10 @@ public class KoyadoScript : MonoBehaviour
         serchMove = false;
         isAttack = false;
         currentLevel = initLevel;
-       // initialSerchScale = serathObj.transform.localScale;
+        // initialSerchScale = serathObj.transform.localScale;
         SetParameter();
         attckCoolTimeCount = attackCoolTime;
-       
+        prePower = currentAttackPower;
     }
 
     // Update is called once per frame
@@ -170,11 +187,11 @@ public class KoyadoScript : MonoBehaviour
     void SerchMove()
     {
         if (!serchMove || targetObj == null) { return; }
-        if (targetObj.gameObject.tag==("Yado1")|| targetObj.gameObject.tag == "Yado2" || targetObj.gameObject.tag == "Yado3")
+        if (targetObj.gameObject.tag == ("Yado1") || targetObj.gameObject.tag == "Yado2" || targetObj.gameObject.tag == "Yado3")
         {
             if (targetObj.GetComponent<YadoScript>().GetIsHold())
             {
-              
+
                 isAttack = false;
                 isMove = true;
                 serchMove = false;
@@ -182,7 +199,7 @@ public class KoyadoScript : MonoBehaviour
                 return;
             }
         }
-        
+
         newVelocity = targetObj.transform.position - transform.position;
 
         rigidbody.velocity = newVelocity.normalized * currentSpeed;
@@ -201,14 +218,14 @@ public class KoyadoScript : MonoBehaviour
             return;
         }
         //相手を倒した時
-        if (targetObj==null) 
+        if (targetObj == null)
         {
             attckCoolTimeCount = attackCoolTime;
             isAttack = false;
             isMove = true;
             return;
         }
-        
+
         //攻撃のクールタイムが残ってる時
         if (attckCoolTimeCount > 0)
         {
@@ -217,11 +234,12 @@ public class KoyadoScript : MonoBehaviour
         }
 
         //ダメージを与える
-        if (targetObj.gameObject.tag=="EnemyBody")
+        if (targetObj.gameObject.tag == "EnemyBody")
         {
             targetObj.GetComponent<EnemyScript>().Damage(currentAttackPower);
 
-        }else if (targetObj.gameObject.tag == "EnemyHokora")
+        }
+        else if (targetObj.gameObject.tag == "EnemyHokora")
         {
             targetObj.GetComponent<Hokora_enemy>().Damage(currentAttackPower);
         }
@@ -236,7 +254,7 @@ public class KoyadoScript : MonoBehaviour
 
     }
 
-   
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -248,7 +266,7 @@ public class KoyadoScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyFightCollision")
         {
-            if(!isAttack)
+            if (!isAttack)
             {
                 //コライダーの親の子の1番目をターゲットにする
                 targetObj = collision.transform.parent.transform.GetChild(0).gameObject;
@@ -256,7 +274,8 @@ public class KoyadoScript : MonoBehaviour
                 isMove = false;
                 isAttack = true;
             }
-        }else if (collision.gameObject.tag == "EnemyHokora")
+        }
+        else if (collision.gameObject.tag == "EnemyHokora")
         {
             if (!isAttack)
             {
