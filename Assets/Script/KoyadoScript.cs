@@ -143,7 +143,7 @@ public class KoyadoScript : MonoBehaviour
     {
         //  Debug.Log("isMove=" + isMove + ",serch=" + serchMove + ",attack=" + isAttack);
 
-        Debug.Log("ÉRÉÑÉhHP=" + currentHP);
+        //Debug.Log("ÉRÉÑÉhHP=" + currentHP);
         if (alive)
         {
             Move();
@@ -230,7 +230,7 @@ public class KoyadoScript : MonoBehaviour
             targetObj.GetComponent<EnemyHomeScript>().Damage(currentAttackPower);
         }
         attckCoolTimeCount = attackCoolTime;
-        Debug.Log("ìGÇ…DamageÇó^Ç¶ÇΩÅI");
+        //Debug.Log("ìGÇ…DamageÇó^Ç¶ÇΩÅI");
 
 
 

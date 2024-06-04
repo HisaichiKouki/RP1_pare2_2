@@ -9,7 +9,7 @@ public class EnemyFightCollisionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyScript=FindAnyObjectByType<EnemyScript>();
+        enemyScript=transform.parent.GetChild(0).GetComponent<EnemyScript>();
     }
 
     // Update is called once per frame

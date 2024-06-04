@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-
+    [SerializeField, Header("€Š[‚ÌƒvƒŒƒnƒu")] private GameObject corpsePrefab;
     [SerializeField, Header("“G‚ÌHP")] private int hp;
     [SerializeField, Header("“G‚ÌˆÚ“®‘¬“x")] private float speed;
     [SerializeField, Header("“G‚ÌUŒ‚—Í")] private int attackPower;
@@ -90,6 +90,8 @@ public class EnemyScript : MonoBehaviour
         //©•ª‚ÌHP‚ª–³‚­‚È‚Á‚½
         if (currentHP <= 0)
         {
+            GameObject copse=Instantiate(corpsePrefab);
+            copse.transform.position = transform.position;
             Destroy(parent.gameObject);
             return;
         }

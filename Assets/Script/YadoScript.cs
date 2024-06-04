@@ -24,6 +24,8 @@ public class YadoScript : MonoBehaviour
 
     [SerializeField, Header("デバッグ用、初期レベル")] private int intlevel;
 
+    [SerializeField, Header("死骸を食べた時に増える経験値")] private float addXPpoint;
+
     int yadoNum;
 
     public int GetYadoNum() { return yadoNum; }
@@ -37,7 +39,7 @@ public class YadoScript : MonoBehaviour
     {
         childObj = transform.GetChild(0).gameObject;
         levelCount = intlevel;
-        collider = GetComponent<CapsuleCollider2D>();
+        collider = transform.GetComponent<CapsuleCollider2D>();
         playerScript = FindAnyObjectByType<PlayerScript>();
         // koyadoScript = FindAnyObjectByType<KoyadoScript>();
         isHitPoint = hitpoint;
@@ -146,9 +148,15 @@ public class YadoScript : MonoBehaviour
             {
                 xpCount = 0;
                 levelCount++;
-                Debug.Log("nowLevel=" + levelCount);
+                //Debug.Log("nowLevel=" + levelCount);
+                Debug.Log("<color=cyan>nowLevel=</color>"+levelCount+",Yadonum="+yadoNum);
+
             }
         }
+    }
+    public void AddXP()
+    {
+        xpCount += addXPpoint;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -16,6 +16,7 @@ TagManager:
   - EnemyBody
   - YadoHome
   - TekiHome
+  - EnemyCorpse
   layers:
   - Default
   - TransparentFX
