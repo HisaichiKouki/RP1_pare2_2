@@ -137,6 +137,8 @@ public class KoyadoScript : MonoBehaviour
     public bool GetNowLevelUP() { return nowLevelUP; }
     public void SetNowLevelUP(bool set) { nowLevelUP = set; }
 
+    public int GetCurrentLevel() { return currentLevel; }
+
     // Start is called before the first frame update
     void Start()
     {
