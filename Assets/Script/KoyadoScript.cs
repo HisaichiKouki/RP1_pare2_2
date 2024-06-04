@@ -19,6 +19,8 @@ public class KoyadoScript : MonoBehaviour
 
     public GameObject hitPointBar;
     HitPointBarScript hitPointBarScript;
+
+    private AudioSource audioSource;
     // [SerializeField] private GameObject serathObj;
 
     //[SerializeField] GameObject target;
@@ -177,8 +179,9 @@ public class KoyadoScript : MonoBehaviour
         prePower = currentAttackPower;
 
         bossScript = FindAnyObjectByType<BossScript>();
+        audioSource=gameObject.GetComponent<AudioSource>();
 
-        
+
     }
 
     // Update is called once per frame
@@ -280,6 +283,8 @@ public class KoyadoScript : MonoBehaviour
         {
             targetObj.GetComponent<BossScript>().Damage(currentAttackPower);
         }
+
+        audioSource.Play();
         attckCoolTimeCount = attackCoolTime;
         //Debug.Log("ìGÇ…DamageÇó^Ç¶ÇΩÅI");
 
