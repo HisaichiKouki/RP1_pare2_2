@@ -7,11 +7,16 @@ public class EnemyHomeScript : MonoBehaviour
 
     [SerializeField] private int hitpoint;
     private int isHitPoint;
+    public GameObject hitPointBar;
+    HitPointBarScript hitPointBarScript;
 
     // Start is called before the first frame update
     void Start()
     {
         isHitPoint = hitpoint;
+        hitPointBarScript = hitPointBar.GetComponent<HitPointBarScript>();
+        hitPointBarScript.hitPoint = isHitPoint;
+
     }
 
     // Update is called once per frame
@@ -23,6 +28,8 @@ public class EnemyHomeScript : MonoBehaviour
     public void Damage(int value)
     {
         isHitPoint -= value;
+        hitPointBarScript.hitPoint = isHitPoint;
+
         //Debug.Log("isHitPoint=" + isHitPoint);
 
         if (isHitPoint <= 0)

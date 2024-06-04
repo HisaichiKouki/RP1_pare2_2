@@ -6,13 +6,18 @@ public class YadoHomeScript : MonoBehaviour
 {
 
     [SerializeField] private int hitpoint;
-    private int isHitPoint; 
+    private int isHitPoint;
     // Start is called before the first frame update
+    public GameObject hitPointBar;
+    HitPointBarScript hitPointBarScript;
 
 
     void Start()
     {
         isHitPoint = hitpoint;
+        hitPointBarScript = hitPointBar.GetComponent<HitPointBarScript>();
+        hitPointBarScript.hitPoint = isHitPoint;
+
     }
 
     // Update is called once per frame
@@ -25,6 +30,7 @@ public class YadoHomeScript : MonoBehaviour
     {
         isHitPoint -= value;
         //Debug.Log("isHitPoint=" + isHitPoint);
+        hitPointBarScript.hitPoint = isHitPoint;
 
         if (isHitPoint <= 0)
         {
