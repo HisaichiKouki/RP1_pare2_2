@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class YadoHomeScript : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class YadoHomeScript : MonoBehaviour
         {
             //ゲームオーバー
             Debug.Log("<color=red>GameOver</color>");
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }

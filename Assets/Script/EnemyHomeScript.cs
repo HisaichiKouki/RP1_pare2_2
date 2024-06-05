@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EnemyHomeScript : MonoBehaviour
@@ -37,6 +38,7 @@ public class EnemyHomeScript : MonoBehaviour
         {
             isHitPoint = 0;
             //Debug.Log("<color=cyan>GameClear</color>");
+            SceneManager.LoadScene("GameClearScene");
 
         }
         hitPointBarScript.hitPoint = isHitPoint;
