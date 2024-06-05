@@ -211,7 +211,11 @@ public class PlayerScript : MonoBehaviour
             collision.gameObject.tag == "Hokora")
         {
             //オブジェクトから離れたらfalseにする
-            hitObj.transform.GetChild(1).gameObject.SetActive(false);
+            if (hitObj.transform.GetChild(1) != null)
+            {
+                hitObj.transform.GetChild(1).gameObject.SetActive(false);
+
+            }
             hitObj = null;
         }
     }
