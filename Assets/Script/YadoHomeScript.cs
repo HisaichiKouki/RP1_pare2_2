@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class YadoHomeScript : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particleprefab;
 
     [SerializeField] private int hitpoint;
     private int isHitPoint;
@@ -31,7 +32,7 @@ public class YadoHomeScript : MonoBehaviour
         isHitPoint -= value;
         //Debug.Log("isHitPoint=" + isHitPoint);
         hitPointBarScript.hitPoint = isHitPoint;
-
+        particleprefab.Play();
         if (isHitPoint <= 0)
         {
             //ゲームオーバー
