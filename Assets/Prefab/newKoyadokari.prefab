@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleprefab: {fileID: 7683915587237995023}
+  deathParticle: {fileID: 8439684097067398922, guid: d0a162a17b270654ea0e2825455eff3f, type: 3}
   speed:
   - 2
   - 1.5

@@ -8,6 +8,7 @@ public class KoyadoScript : MonoBehaviour
 {
     GameObject parent;
     [SerializeField] private ParticleSystem particleprefab;
+    public GameObject deathParticle;
 
     [SerializeField, Header("コヤドの速さ")] private float[] speed;
     [SerializeField, Header("コヤドのHp")] private int[] hp;
@@ -149,6 +150,8 @@ public class KoyadoScript : MonoBehaviour
         particleprefab.Play();
         if (currentHP <= 0)
         {
+            GameObject particleObj= Instantiate(deathParticle);
+            particleObj.transform.position = transform.position;
             Destroy(parent.gameObject);
            // bossScript.MinasTargetCount();
         }
