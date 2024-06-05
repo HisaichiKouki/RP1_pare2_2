@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spownPrefab: {fileID: 2492018269505014268, guid: 1de22c15b3cb1784cb15e7d37502e59d, type: 3}
-  spownTime: 5
+  spownTime: 10
   hitPoint: 100
 --- !u!1 &1050005999854481829
 GameObject:
