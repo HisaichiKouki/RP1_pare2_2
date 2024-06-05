@@ -6,6 +6,7 @@ using UnityEngine.Assertions.Must;
 
 public class PlayerScript : MonoBehaviour
 {
+    AudioSource audioSource;
     [SerializeField] private ParticleSystem particleprefab;
 
     [SerializeField] private Vector2 moveSpeed;
@@ -27,6 +28,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource=gameObject.GetComponent<AudioSource>();
         playerRigidbody = gameObject.GetComponent<Rigidbody2D>();
         isYadoHold = false;
         isHokoraHold = false;
@@ -88,6 +90,7 @@ public class PlayerScript : MonoBehaviour
                 //ここにオブジェクトごとの関数をいれる
                 YadoHold();
                 HokoraHold();
+                audioSource.Play();
             }
         }
     }
@@ -103,6 +106,7 @@ public class PlayerScript : MonoBehaviour
             particleprefab.Stop();
             YadoRelese();
             HokoraRelese();
+            audioSource.Play();
         }
     }
 

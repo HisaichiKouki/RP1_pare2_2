@@ -9,6 +9,7 @@ public class ShoutScript : MonoBehaviour
     public float easeTime;
     float easeT;
     float easeSize;
+
     // Start is called before the first frame update
     void Start()
     {

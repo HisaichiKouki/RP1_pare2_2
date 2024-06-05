@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PointShoutScript : MonoBehaviour
 {
+    GameObject childObj;
+    AudioSource m_AudioSource;
     [SerializeField] private ParticleSystem particleprefab;
 
     [Header("観客の声をここで管理する")]
@@ -33,6 +35,8 @@ public class PointShoutScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        childObj=transform.GetChild(0).gameObject;
+        m_AudioSource =gameObject.GetComponent<AudioSource>();
         UnityEngine.Random.InitState(DateTime.Now.Millisecond);
         coolTimeCount = 0;
         koyadoLevelUp = false;
@@ -49,6 +53,7 @@ public class PointShoutScript : MonoBehaviour
             {
                 if (shoutKoyadoLevelUP.Length > 0)
                 {
+                    m_AudioSource.Play();
                     //ここで乱数を生成
                     int rnd = UnityEngine.Random.Range(0, shoutKoyadoLevelUP.Length);
                     //プレハブのタイプによって出方が変わる
@@ -73,6 +78,7 @@ public class PointShoutScript : MonoBehaviour
             {
                 if (shoutTexts1.Length > 0)
                 {
+                    m_AudioSource.Play();
                     //ここで乱数を生成
                     int rnd = UnityEngine.Random.Range(0, shoutTexts1.Length);
                     //プレハブのタイプによって出方が変わる
@@ -93,6 +99,8 @@ public class PointShoutScript : MonoBehaviour
             {
                 if (shoutTexts2.Length > 0)
                 {
+                    childObj.GetComponent<AudioSource>().Play();
+                    //m_AudioSource.Play();
                     //ここで乱数を生成
                     int rnd = UnityEngine.Random.Range(0, shoutTexts2.Length);
                     //プレハブのタイプによって出方が変わる
@@ -112,6 +120,7 @@ public class PointShoutScript : MonoBehaviour
             {
                 if (shoutTexts3.Length > 0)
                 {
+                    m_AudioSource.Play();
                     //ここで乱数を生成
                     int rnd = UnityEngine.Random.Range(0, shoutTexts3.Length);
                     //プレハブのタイプによって出方が変わる

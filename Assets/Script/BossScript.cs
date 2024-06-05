@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
+    public GameObject kurackObj;
+    AudioSource m_Audiosource;
     [SerializeField] private ParticleSystem particleprefab;
     [SerializeField] private ParticleSystem particleprefab1;
 
@@ -39,6 +41,7 @@ public class BossScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_Audiosource=gameObject.GetComponent<AudioSource>();
         nowTargetCount = 0;
         serachScript = serachObj.GetComponent<BossAttackSerch>();
         isHitPoint = hitPoint;
@@ -92,7 +95,7 @@ public class BossScript : MonoBehaviour
         }
 
         if (targetObj[value] == null) { return; }
-
+        m_Audiosource.Play();
         GameObject attackObj = Instantiate(attackPrefab);
         attackObj.transform.position = targetObj[value].transform.position;
         attackObj.GetComponent<AttackScript>().SetAttackPower(attackPower);
@@ -114,7 +117,7 @@ public class BossScript : MonoBehaviour
             Debug.Log("ƒ{ƒX‚ð“|‚µ‚½");
             particleprefab.Play();
             particleprefab1.Play();
-
+            kurackObj.gameObject.GetComponent<AudioSource>().Play();
         }
     }
     void SerachObjReset()

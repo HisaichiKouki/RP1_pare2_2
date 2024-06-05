@@ -6,7 +6,7 @@ public class YadoScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private ParticleSystem particleprefab;
-
+    private AudioSource audioSource;
     GameObject childObj;
     private bool isHold;
     public float[] levelUpTime;
@@ -44,6 +44,7 @@ public class YadoScript : MonoBehaviour
     public int GetLevel() { return levelCount; }
     void Start()
     {
+        audioSource=gameObject.GetComponent<AudioSource>();
         playerObj = GameObject.FindWithTag("Player");
         childObj = transform.GetChild(0).gameObject;
         levelCount = intlevel;
@@ -182,6 +183,7 @@ public class YadoScript : MonoBehaviour
             //ヤドの経験値がレベル区分の量に達したらレベルアップする
             if (xpCount >= levelUpTime[levelCount])
             {
+                audioSource.Play();
                 particleprefab.Play();
                 SetShoutCanpas();
                 shoutCanpas.transform.GetChild(0).GetComponent<PointShoutScript>().setShout(0);
